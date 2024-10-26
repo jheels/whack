@@ -6,9 +6,9 @@ import Phaser from 'phaser';
 import { Preloader } from './scenes/Preloader';
 
 const config = {
-    type: Phaser.AUTO,
-    width: 1200,
-    height: 850,
+    type: Phaser.CANVAS,
+    width: 1344,
+    height: 1104,
     parent: 'game-container',
     backgroundColor: '#028af8',
     physics: {
@@ -19,7 +19,7 @@ const config = {
         }
     },
     pixelArt: true,
-    antialias: false,
+    antiAlias : false,  
     scene: [
         Boot,
         Preloader,
