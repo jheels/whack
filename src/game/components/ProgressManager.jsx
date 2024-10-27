@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { scenarios, AdviceRank } from "../../../public/static/scenario";
@@ -22,7 +21,7 @@ export class ProgressManager {
         return ProgressManager.instance;
     }
 
-    initializeUnit(unitId, totalTasks) {
+    initializeUnit(unitId) {
         if (!this.gameProgress.unitsProgress.has(unitId)) {
             this.gameProgress.unitsProgress.set(unitId, {
                 completedTasks: 0,

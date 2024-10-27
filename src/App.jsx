@@ -43,8 +43,8 @@ function App() {
                         onComplete={() => {
                             setShowScenario(false);
                             // To just see current state:
-                            const manager = ProgressManager.getInstance();
-                            manager.debug();
+                            // const manager = ProgressManager.getInstance();
+                            // manager.debug();
                         }}
                         onClose={() => setShowScenario(false)}
                     />
