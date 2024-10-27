@@ -37,6 +37,24 @@ export class Game extends Scene {
         const extraLayer = map.createLayer("Tile Layer 4", tileset);
         extraLayer.setScale(scaleX, scaleY);
 
+        var music = this.sound.get("backgroundMusic");
+
+        var muteButton = this.add.sprite(1250, 100, 'unmuteIcon'); // Position as needed
+        muteButton.setInteractive(); // Make it interactive
+    
+        // Mute button click handler
+        muteButton.on('pointerdown', function () {
+            if (music.isPlaying) {
+                music.pause();
+                muteButton.setTexture('muteIcon'); // Change icon to mute
+            } else {
+                music.resume();
+                muteButton.setTexture('unmuteIcon'); // Change icon to unmute
+            }
+        });
+
+        muteButton.scale(0.5);
+
         // Create the tile map and layers
         this.anims.create({
             key: "walk-down",

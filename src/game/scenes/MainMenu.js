@@ -85,30 +85,27 @@ export class MainMenu extends Scene
             buttonText.setStyle({ fill: '#ffffff' }); // Revert to white
         });
 
-        var muteButton = this.add.text(0, 0, 'Mute', { fontSize: '200px', fill: '#ffffff' });
-        muteButton.setInteractive();
-
-        muteButton.on('pointerdown', function () {
-            if (music.isPlaying) {
-                music.pause();
-                muteButton.setText('Unmute');
-            } else {
-                music.resume();
-                muteButton.setText('Mute');
-            }
-        });
-
-        muteButton.setOrigin(0.5);
-
-
-        
-        EventBus.emit('current-scene-ready', this);
-
         // Play the background music
-        const music = this.sound.add('backgroundMusic'); // Create a sound object
+        var music = this.sound.add('backgroundMusic'); // Create a sound object
         music.play({ loop: true }); // Play the music in a loop
 
         // Adjust Volume
         music.setVolume(0.5); // Set the volume (0.0 to 1.0)
+    
+        var muteButton = this.add.sprite(1250, 100, 'unmuteIcon'); // Position as needed
+        muteButton.setInteractive(); // Make it interactive
+    
+        // Mute button click handler
+        muteButton.on('pointerdown', function () {
+            if (music.isPlaying) {
+                music.pause();
+                muteButton.setTexture('muteIcon'); // Change icon to mute
+            } else {
+                music.resume();
+                muteButton.setTexture('unmuteIcon'); // Change icon to unmute
+            }
+        });
+        
+        EventBus.emit('current-scene-ready', this);
     }
 }
