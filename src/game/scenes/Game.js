@@ -14,7 +14,7 @@ export class Game extends Scene {
             frameWidth: 32, // Adjust based on your sprite dimensions
             frameHeight: 32,
         });
-        this.load.spritesheet("character", "assets/character.png", {
+        this.load.spritesheet("character", "assets/character2.png", {
             frameWidth: 16, // Adjust if your sprite size is different
             frameHeight: 16, // Adjust if your sprite size is different
         });
@@ -82,7 +82,7 @@ export class Game extends Scene {
         });
 
         this.player = this.physics.add.sprite(100, 550, "character");
-        this.player.setScale(2);
+        this.player.setScale(2.5);
         this.cursors = this.input.keyboard.createCursorKeys();
 
         // Set up the camera to follow the player
