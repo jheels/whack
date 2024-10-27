@@ -7,9 +7,6 @@ export class Game extends Scene {
 
     preload() {
         // Load the TMX/TMJ file and tileset images
-
-        this.load.image("tiles", "assets/tiles.png"); // Load the tileset image
-        this.load.tilemapTiledJSON("map", "assets/map.json"); // or 'assets/map.tmj'
         this.load.spritesheet("npc", "assets/global.png", {
             frameWidth: 32, // Adjust based on your sprite dimensions
             frameHeight: 32,
@@ -39,6 +36,24 @@ export class Game extends Scene {
 
         const extraLayer = map.createLayer("Tile Layer 4", tileset);
         extraLayer.setScale(scaleX, scaleY);
+
+        var music = this.sound.get("backgroundMusic");
+
+        var muteButton = this.add.sprite(1250, 100, 'unmuteIcon'); // Position as needed
+        muteButton.setInteractive(); // Make it interactive
+    
+        // Mute button click handler
+        muteButton.on('pointerdown', function () {
+            if (music.isPlaying) {
+                music.pause();
+                muteButton.setTexture('muteIcon'); // Change icon to mute
+            } else {
+                music.resume();
+                muteButton.setTexture('unmuteIcon'); // Change icon to unmute
+            }
+        });
+
+        muteButton.scale(0.5);
 
         // Create the tile map and layers
         this.anims.create({
