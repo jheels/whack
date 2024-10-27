@@ -72,11 +72,9 @@ export class MainMenu extends Scene
 
         buttonText.on('pointerup', function(){
             buttonText.setStyle({ fill: '#ffffff' }); // Revert to white
-            graphics.destroy();  // This removes the overlay graphics
-            buttonText.destroy();  // This removes the Play button
-            logo.destroy();
             this.scene.start('Game');
-        })
+        }, this)
+
     
         // Optional: Add hover effect to the Play button (e.g., change color on hover)
         buttonText.on('pointerover', function () {
