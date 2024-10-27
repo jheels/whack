@@ -48,7 +48,7 @@ export class Game extends Scene {
         // Mute button click handler
         muteButton.on('pointerdown', function () {
             if (music.isPlaying) {
-                music.resume();
+                music.pause();
                 muteButton.setTexture('muteIcon'); // Change icon to mute
             } else {
                 music.resume();
@@ -56,7 +56,7 @@ export class Game extends Scene {
             }
         });
 
-        muteButton.setScale(0.5);   
+        muteButton.setScale(0.5);
 
         // Create the tile map and layers
         this.anims.create({
