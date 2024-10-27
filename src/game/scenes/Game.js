@@ -20,6 +20,10 @@ export class Game extends Scene {
         });
     }
 
+    runQuest() {
+        // pass
+    }
+
     create() {
         // Create the tile map and layers
 
@@ -129,7 +133,5 @@ export class Game extends Scene {
         // Keep camera zoom
         this.cameras.main.setZoom(1.5);
     }
-
-    runQuest(player, npc) {}
 }
 
