@@ -14,7 +14,7 @@ export class Game extends Scene {
             frameWidth: 32, // Adjust based on your sprite dimensions
             frameHeight: 32,
         });
-        this.load.spritesheet("character", "assets/character2.png", {
+        this.load.spritesheet("character", "assets/character.png", {
             frameWidth: 16, // Adjust if your sprite size is different
             frameHeight: 16, // Adjust if your sprite size is different
         });
