@@ -97,7 +97,9 @@ export class Game extends Scene {
         });
 
         this.player = this.physics.add.sprite(100, 550, "character");
-        this.player.setScale(2);
+        this.player.setScale(2.5);
+        this.physics.world.createDebugGraphic();
+        this.physics.world.debugGraphic.visible = true;
         this.cursors = this.input.keyboard.createCursorKeys();
 
         // Set up the camera to follow the player
@@ -110,7 +112,19 @@ export class Game extends Scene {
         this.npc2 = this.physics.add.sprite(300, 400, "npc");
         this.npc.setScale(2);
         this.npc2.setScale(2);
+
+        const collisionObjects = map.getObjectLayer('collision').objects;
+        collisionObjects.forEach(object => {
+            const obj = this.physics.add.sprite(object.x * scaleX, object.y * scaleY, null).setOrigin(0, 0);
+            obj.displayWidth = object.width * scaleX;
+            obj.displayHeight = object.height * scaleY;
+            obj.body.setImmovable(true);
+            obj.body.setAllowGravity(false);
+            this.physics.add.collider(this.player, obj);
+        });
+
     }
+
 
     update() {
         // Reset velocity
