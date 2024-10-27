@@ -10,54 +10,30 @@ export class Game extends Scene {
         // Load assets
         this.load.image("tiles", "assets/tiles.png");
         this.load.tilemapTiledJSON("map", "assets/map.json");
-        this.load.spritesheet("npc1", "assets/npc/M_01.png", {
-            frameWidth: 16,
-            frameHeight: 18,
+
+        const npcs = [
+            { key: "npc1", path: "assets/npc/M_01.png" },
+            { key: "npc2", path: "assets/npc/M_02.png" },
+            { key: "npc3", path: "assets/npc/M_03.png" },
+            { key: "npc4", path: "assets/npc/M_04.png" },
+            { key: "npc5", path: "assets/npc/M_05.png" },
+            { key: "npc6", path: "assets/npc/M_06.png" },
+            { key: "npc7", path: "assets/npc/F_01.png" },
+            { key: "npc8", path: "assets/npc/F_02.png" },
+            { key: "npc9", path: "assets/npc/F_03.png" },
+            { key: "npc10", path: "assets/npc/F_04.png" },
+            { key: "npc11", path: "assets/npc/F_05.png" },
+            { key: "npc12", path: "assets/npc/F_06.png" },
+        ];
+    
+        // Load NPC spritesheets
+        npcs.forEach(npc => {
+            this.load.spritesheet(npc.key, npc.path, {
+                frameWidth: 16,
+                frameHeight: 18,
+            });
         });
-        this.load.spritesheet("npc2", "assets/npc/M_02.png", {
-            frameWidth: 16,
-            frameHeight: 18,
-        });
-        this.load.spritesheet("npc3", "assets/npc/M_03.png", {
-            frameWidth: 16,
-            frameHeight: 18,
-        });
-        this.load.spritesheet("npc4", "assets/npc/M_04.png", {
-            frameWidth: 16,
-            frameHeight: 18,
-        });
-        this.load.spritesheet("npc5", "assets/npc/M_05.png", {
-            frameWidth: 16,
-            frameHeight: 18,
-        });
-        this.load.spritesheet("npc6", "assets/npc/M_06.png", {
-            frameWidth: 16,
-            frameHeight: 18,
-        });
-        this.load.spritesheet("npc7", "assets/npc/F_01.png", {
-            frameWidth: 16,
-            frameHeight: 18,
-        });
-        this.load.spritesheet("npc8", "assets/npc/F_02.png", {
-            frameWidth: 16,
-            frameHeight: 18,
-        });
-        this.load.spritesheet("npc9", "assets/npc/F_03.png", {
-            frameWidth: 16,
-            frameHeight: 18,
-        });
-        this.load.spritesheet("npc10", "assets/npc/F_04.png", {
-            frameWidth: 16,
-            frameHeight: 18,
-        });
-        this.load.spritesheet("npc11", "assets/npc/F_05.png", {
-            frameWidth: 16,
-            frameHeight: 18,
-        });
-        this.load.spritesheet("npc12", "assets/npc/F_06.png", {
-            frameWidth: 16,
-            frameHeight: 18,
-        });
+    
         this.load.spritesheet("character", "assets/character.png", {
             frameWidth: 16,
             frameHeight: 16,
@@ -212,44 +188,28 @@ export class Game extends Scene {
         this.cameras.main.setBounds(0, 0, 1344, 1104);
 
         // Create NPCs
-        this.npc = this.physics.add.sprite(700, 420, "npc1").setScale(2);
-        this.npc2 = this.physics.add.sprite(300, 530, "npc2").setScale(2);
-        this.npc3 = this.physics.add.sprite(400, 530, "npc3").setScale(2);
-        this.npc4 = this.physics.add.sprite(320, 760, "npc4").setScale(2);
-        this.npc5 = this.physics.add.sprite(210, 810, "npc5").setScale(2);
-        this.npc6 = this.physics.add.sprite(100, 800, "npc6").setScale(2);
-        this.npc7 = this.physics.add.sprite(300, 900, "npc7").setScale(2);
-        this.npc8 = this.physics.add.sprite(800, 840, "npc8").setScale(2);
-        this.npc9 = this.physics.add.sprite(300, 1000, "npc9").setScale(2);
-        this.npc10 = this.physics.add.sprite(1200, 530, "npc10").setScale(2);
-        this.npc11 = this.physics.add.sprite(800, 740, "npc11").setScale(2);
-        this.npc12 = this.physics.add.sprite(940, 1030, "npc12").setScale(2);
-
-        this.npc.body.immovable = true;
-        this.npc2.body.immovable = true;
-        this.npc3.body.immovable = true;
-        this.npc4.body.immovable = true;
-        this.npc5.body.immovable = true;
-        this.npc6.body.immovable = true;
-        this.npc7.body.immovable = true;
-        this.npc8.body.immovable = true;
-        this.npc9.body.immovable = true;
-        this.npc10.body.immovable = true;
-        this.npc11.body.immovable = true;
-        this.npc12.body.immovable = true;
-
-        this.physics.add.collider(this.player, this.npc);
-        this.physics.add.collider(this.player, this.npc2);
-        this.physics.add.collider(this.player, this.npc3);
-        this.physics.add.collider(this.player, this.npc4);
-        this.physics.add.collider(this.player, this.npc5);
-        this.physics.add.collider(this.player, this.npc6);
-        this.physics.add.collider(this.player, this.npc7);
-        this.physics.add.collider(this.player, this.npc8);
-        this.physics.add.collider(this.player, this.npc9);
-        this.physics.add.collider(this.player, this.npc10);
-        this.physics.add.collider(this.player, this.npc11);
-        this.physics.add.collider(this.player, this.npc12);
+        const npcData = [
+            { key: "npc1", x: 700, y: 200 },
+            { key: "npc2", x: 100, y: 430 },
+            { key: "npc3", x: 420, y: 500 },
+            { key: "npc4", x: 400, y: 750 },
+            { key: "npc5", x: 750, y: 500 },
+            { key: "npc6", x: 75, y: 900 },
+            { key: "npc7", x: 550, y: 875 },
+            { key: "npc8", x: 1100, y: 800 },
+            { key: "npc9", x: 650, y: 1000 },
+            { key: "npc10", x: 1150, y: 470 },
+            { key: "npc11", x: 1200, y: 230 },
+            { key: "npc12", x: 1050, y: 1000 },
+        ];
+    
+        // Create NPCs, scale them up, and set them as immovable
+        this.npcs = npcData.map(data => {
+            const npc = this.physics.add.sprite(data.x, data.y, data.key).setScale(2.5);
+            npc.body.immovable = true;
+            this.physics.add.collider(this.player, npc);
+            return npc;
+        });
 
         // Add E key for interaction
         this.interactKey = this.input.keyboard.addKey(
@@ -265,6 +225,7 @@ export class Game extends Scene {
             this.player.y - 40,
             'Press "E" to interact',
             {
+                zIndex : 1000,
                 fontSize: "16px",
                 fill: "#ffffff",
                 backgroundColor: "#000000",
@@ -361,23 +322,13 @@ export class Game extends Scene {
         this.cameras.main.setZoom(1.5);
 
         // Proximity check for NPC interaction
-        this.isNearNPC =
-            this.checkProximity(this.npc, 50) ||
-            this.checkProximity(this.npc2, 50) ||
-            this.checkProximity(this.npc3, 50) ||
-            this.checkProximity(this.npc4, 50) ||
-            this.checkProximity(this.npc5, 50) ||
-            this.checkProximity(this.npc6, 50) ||
-            this.checkProximity(this.npc7, 50) ||
-            this.checkProximity(this.npc8, 50) ||
-            this.checkProximity(this.npc9, 50) ||
-            this.checkProximity(this.npc10, 50) ||
-            this.checkProximity(this.npc11, 50) ||
-            this.checkProximity(this.npc12, 50);
+        this.isNearNPC = this.npcs.some(npc => this.checkProximity(npc, 50));
+
 
         // Show or hide the tooltip based on proximity
         if (this.isNearNPC) {
             this.tooltip.setVisible(true);
+            console.log(this.player.x, this.player.y);
             this.tooltip.setPosition(this.player.x, this.player.y - 40); // Position above the player
         } else {
             this.tooltip.setVisible(false);
