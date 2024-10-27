@@ -5,14 +5,16 @@ import { ProgressManager } from "./ProgressManager";
 const pm = ProgressManager.getInstance();
 
 console.log(pm.getUnitProgress(0));
+console.log(pm.getTotalUnitScenarios(0));
 
 const ProgressPopup = () => {
     return (
-        <div className="absolute top-40 left-1/2  -translate-x-1/2 -translate-y-1/2 bg-pixelBackground text-black p-3 ">
+        <div className="absolute top-40 left-1/2  -translate-x-1/2 -translate-y-1/2 bg-pixelBackground text-black p-3 min-w-80">
             {/* <h1 className="text-3xl">Progress</h1> */}
-            <div className="flex gap-4 items-center justify-end">
+            <div className="flex gap-4 items-center ">
                 <p>Budgeting</p>
                 <progress
+                    // className="min-w-40"
                     value={pm.getUnitProgress(0).completedTasks}
                     max={pm.getTotalUnitScenarios(0)}
                 ></progress>

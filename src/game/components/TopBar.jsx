@@ -6,20 +6,24 @@ import ProgressPopup from "./Progress";
 
 const pm = ProgressManager.getInstance();
 
-console.log(pm.getUnitProgress(0));
+let overallValue = 0;
+let overallMax = 0;
 
+for (let index = 0; index < 5; index++) {
+    overallValue += pm.getUnitProgress(index).completedTasks;
+    overallMax += pm.getTotalUnitScenarios(index);
+}
 const TopBar = () => {
     const [viewProgress, setViewProgress] = useState(false);
 
     return (
         <div className="absolute left-1/2 transform -translate-x-1/2 top-3">
             <progress
-                // value={5}
-                // max={7}
+                className="bg-gray-100"
                 onMouseEnter={() => setViewProgress(true)}
                 onMouseLeave={() => setViewProgress(false)}
-                value={pm.getUnitProgress(0).completedTasks}
-                max={pm.getTotalUnitScenarios(0)}
+                value={overallValue}
+                max={overallMax}
             ></progress>
             {viewProgress && <ProgressPopup />}
         </div>
