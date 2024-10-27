@@ -115,7 +115,7 @@ export const sampleScenario3 = {
         {
             pageNumber: 1,
             title: "Understanding Your Options",
-            text: "When considering whether to rent or ____, think about your financial situation. Renting often requires a lower upfront cost, while buying may involve a ___ for a mortgage. Additionally, consider how long you plan to stay in one place, as this can impact your decision to ___ a home.",
+            text: "When considering whether to rent or ___, think about your financial situation. Renting often requires a lower upfront cost, while buying may involve a ___ for a mortgage. Additionally, consider how long you plan to stay in one place, as this can impact your decision to ___ a home.",
             correctOrder: ["buy", "down payment", "buy"],
         },
     ],
@@ -137,7 +137,7 @@ export const sampleScenario4 = {
         {
             pageNumber: 1,
             title: "Planning for Maintenance",
-            text: "As a new homeowner, it’s important to budget for ____ costs. A common rule of thumb is to save about 1% of your home’s value each year for maintenance and repairs. This means if your home is worth $300,000, you should plan for ____ annually. Keeping up with regular maintenance can save you from larger, unexpected expenses down the road.",
+            text: "As a new homeowner, it’s important to budget for ___ costs. A common rule of thumb is to save about 1% of your home’s value each year for maintenance and repairs. This means if your home is worth $300,000, you should plan for ___ annually. Keeping up with regular maintenance can save you from larger, unexpected expenses down the road.",
             correctOrder: ["maintenance", "3,000"],
         },
     ],
@@ -159,7 +159,7 @@ export const sampleScenario5 = {
         {
             pageNumber: 1,
             title: "Identifying Scams",
-            text: "To protect yourself, it’s essential to recognize common ____. Many scams often use tactics such as high-pressure sales, unsolicited offers, or requests for personal ____. Always verify the source before providing any information, and be cautious of deals that seem too good to be ___.",
+            text: "To protect yourself, it’s essential to recognize common ___. Many scams often use tactics such as high-pressure sales, unsolicited offers, or requests for personal ___. Always verify the source before providing any information, and be cautious of deals that seem too good to be ___.",
             correctOrder: ["scams", "information", "true"],
         },
     ],
@@ -181,7 +181,7 @@ export const sampleScenario6 = {
         {
             pageNumber: 1,
             title: "Steps to Report Scams",
-            text: "If you encounter a scam, the first step is to report it to the ____ authorities, such as the Federal Trade Commission (FTC). Provide as much detail as possible about the ____, including the names and contact information involved. Reporting scams helps protect others and can aid in investigations to prevent further ____.",
+            text: "If you encounter a scam, the first step is to report it to the ___ authorities, such as the Federal Trade Commission (FTC). Provide as much detail as possible about the ___, including the names and contact information involved. Reporting scams helps protect others and can aid in investigations to prevent further ____.",
             correctOrder: ["appropriate", "incident", "scams"],
         },
     ],
@@ -203,7 +203,7 @@ export const sampleScenario7 = {
         {
             pageNumber: 1,
             title: "Practicing Online Safety",
-            text: "To stay safe online, always use strong, unique passwords for each account and enable ____ authentication whenever possible. Be wary of suspicious emails and links that ask for your personal ____. Keeping your software updated can also help protect you from ____ vulnerabilities.",
+            text: "To stay safe online, always use strong, unique passwords for each account and enable ___ authentication whenever possible. Be wary of suspicious emails and links that ask for your personal ___. Keeping your software updated can also help protect you from ___ vulnerabilities.",
             correctOrder: ["two-factor", "information", "security"],
         },
     ],
@@ -225,7 +225,7 @@ export const sampleScenario8 = {
         {
             pageNumber: 1,
             title: "What is a Credit Score?",
-            text: "A credit score is a numerical representation of your ____ history, reflecting how responsible you are with borrowed money. It typically ranges from 300 to 850, with higher scores indicating better creditworthiness. Factors influencing your score include payment history, ____ utilization, and length of credit history.",
+            text: "A credit score is a numerical representation of your ___ history, reflecting how responsible you are with borrowed money. It typically ranges from 300 to 850, with higher scores indicating better creditworthiness. Factors influencing your score include payment history, ___ utilization, and length of credit history.",
             correctOrder: ["credit", "credit"],
         },
     ],
@@ -247,7 +247,7 @@ export const sampleScenario9 = {
         {
             pageNumber: 1,
             title: "Strategies for Debt Management",
-            text: "To manage debt effectively, start by listing all your debts, including amounts and interest ____. Prioritize paying off high-interest debt first while making minimum payments on other loans. Consider strategies like the ___ method or snowball method to pay down your debt more effectively.",
+            text: "To manage debt effectively, start by listing all your debts, including amounts and interest ___. Prioritize paying off high-interest debt first while making minimum payments on other loans. Consider strategies like the ___ method or snowball method to pay down your debt more effectively.",
             correctOrder: ["rates", "avalanche"],
         },
     ],
@@ -269,7 +269,7 @@ export const sampleScenario10 = {
         {
             pageNumber: 1,
             title: "Using Credit Cards Wisely",
-            text: "To use your credit card responsibly, always pay your balance in ____ to avoid interest charges. Limit your spending to what you can afford to pay back each month, and keep your credit utilization below ____. Regularly monitor your statements for any unauthorized transactions.",
+            text: "To use your credit card responsibly, always pay your balance in ___ to avoid interest charges. Limit your spending to what you can afford to pay back each month, and keep your credit utilization below ___. Regularly monitor your statements for any unauthorized transactions.",
             correctOrder: ["full", "30%"],
         },
     ],
@@ -291,7 +291,7 @@ export const sampleScenario11 = {
         {
             pageNumber: 1,
             title: "Types of Loans Explained",
-            text: "There are various types of loans available, including ____ loans, personal loans, and student loans. Each type has its own terms and interest rates. For instance, a mortgage loan is specifically for buying a ____ and typically has lower interest rates compared to personal loans.",
+            text: "There are various types of loans available, including ___ loans, personal loans, and student loans. Each type has its own terms and interest rates. For instance, a mortgage loan is specifically for buying a ___ and typically has lower interest rates compared to personal loans.",
             correctOrder: ["mortgage", "home"],
         },
     ],
@@ -313,7 +313,7 @@ export const sampleScenario12 = {
         {
             pageNumber: 1,
             title: "Steps to Apply for a Loan",
-            text: "The loan application process typically involves several steps: First, determine how much you need to borrow and the type of loan you want. Next, gather necessary ____ such as income proof and credit history. Finally, submit your application and wait for the lender’s ____. Be prepared for potential follow-up questions.",
+            text: "The loan application process typically involves several steps: First, determine how much you need to borrow and the type of loan you want. Next, gather necessary ___ such as income proof and credit history. Finally, submit your application and wait for the lender’s ___. Be prepared for potential follow-up questions.",
             correctOrder: ["documents", "decision"],
         },
     ],
@@ -335,7 +335,7 @@ export const sampleScenario13 = {
         {
             pageNumber: 1,
             title: "Effective Loan Repayment Strategies",
-            text: "To repay your loan effectively, create a budget that includes your monthly loan ____. Try to make payments above the minimum required to reduce your overall ____ costs. Additionally, consider refinancing options if you can secure a lower interest rate, as this can save you money in the long run.",
+            text: "To repay your loan effectively, create a budget that includes your monthly loan ___. Try to make payments above the minimum required to reduce your overall ___ costs. Additionally, consider refinancing options if you can secure a lower interest rate, as this can save you money in the long run.",
             correctOrder: ["payments", "interest"],
         },
     ],
@@ -357,7 +357,7 @@ export const sampleScenario14 = {
         {
             pageNumber: 1,
             title: "Key Loan Terms Explained",
-            text: "When dealing with loans, it's important to understand terms like ____ rate, principal, and amortization. The interest rate determines how much extra you will pay over the life of the ____. Knowing these terms can help you make informed decisions and avoid potential pitfalls in borrowing.",
+            text: "When dealing with loans, it's important to understand terms like ___ rate, principal, and amortization. The interest rate determines how much extra you will pay over the life of the ___. Knowing these terms can help you make informed decisions and avoid potential pitfalls in borrowing.",
             correctOrder: ["interest", "loan"],
         },
     ],
