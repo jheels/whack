@@ -1,33 +1,27 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import DialogueScreen from "./DialougeScreen";
 import { LearningPage } from "./LearningScreen";
 import { AdviceScreen } from "./AdviceScreen";
+import { LoadingDots, OutcomeScreen } from "./OutcomesScreen";
 import { ProgressManager } from "./ProgressManager";
 
 export const ScenarioManager = ({ scenario, onComplete, onClose }) => {
     const [stage, setStage] = useState("dialogue");
     const [currentPageIndex, setCurrentPageIndex] = useState(0);
-    const [pageAnswers, setPageAnswers] = useState(
-        new Map(scenario.learningPages.map((page) => [page.pageNumber, []]))
-    );
+    const [selectedOutcome, setSelectedOutcome] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     // Initialize the progress manager and unit
     const progressManager = ProgressManager.getInstance();
 
-    const unitId = scenario.unitId;
-    const totalScenerios = progressManager.getTotalUnitScenarios(unitId);
-
-    progressManager.initializeUnit(scenario.unitId, totalScenerios);
+    progressManager.initializeUnit(scenario.unitId);
 
     const handleStartLearning = () => {
         setStage("learning");
     };
 
     const handlePageComplete = (pageNumber, answers) => {
-        // Store the answers for this page
-        setPageAnswers((prev) => new Map(prev).set(pageNumber, answers));
 
         if (currentPageIndex < scenario.learningPages.length - 1) {
             setCurrentPageIndex((prev) => prev + 1);
@@ -50,23 +44,37 @@ export const ScenarioManager = ({ scenario, onComplete, onClose }) => {
         setStage("learning");
     };
 
-    const handleAdviceSelect = (adviceId) => {
+    const handleAdviceSelect = async (adviceId) => {
         // Store the selected advice in the progress manager
         progressManager.storeChosenAdvice(scenario.scenarioId, adviceId.id);
+        console.log("Stored advice", adviceId.id);
+        setStage("outcome");
 
-        // Call the original onComplete callback
-        if (onComplete) {
-            onComplete(adviceId);
-        }
+        // Start loading animation
+        setIsLoading(true);
+
+        // Simulate loading time
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        console.log("Loading complete");
+
+        // Get the outcome from the static database
+        const selectedAdvice = scenario.adviceOptions.get(adviceId.id);
+        setSelectedOutcome(selectedAdvice.outcomes);
+        setIsLoading(false);
     };
 
-    // Get previously submitted answers for current page if they exist
-    const getCurrentPageAnswers = () => {
-        return (
-            pageAnswers.get(
-                scenario.learningPages[currentPageIndex].pageNumber
-            ) || []
-        );
+    const handleRestart = () => {
+        // Reset to initial state
+        setStage("dialogue");
+        setCurrentPageIndex(0);
+        setSelectedOutcome(null);
+    };
+
+    const handleContinue = () => {
+        // Call the original onComplete callback
+        if (onComplete) {
+            onComplete(selectedOutcome);
+        }
     };
 
     return (
@@ -88,10 +96,7 @@ export const ScenarioManager = ({ scenario, onComplete, onClose }) => {
                         )
                     }
                     onBack={handlePageBack}
-                    initialAnswers={getCurrentPageAnswers()}
-                    isLastPage={
-                        currentPageIndex === scenario.learningPages.length - 1
-                    }
+                    isLastPage={currentPageIndex === scenario.learningPages.length - 1}
                 />
             )}
             {stage === "advice" && (
@@ -100,6 +105,19 @@ export const ScenarioManager = ({ scenario, onComplete, onClose }) => {
                     onSelectAdvice={handleAdviceSelect}
                     onBack={handleAdviceBack}
                 />
+            )}
+            {stage === "outcome" && (
+                <div className="p-6">
+                    {isLoading ? (
+                        <LoadingDots />
+                    ) : (
+                        <OutcomeScreen
+                            outcome={selectedOutcome}
+                            onRestart={handleRestart}
+                            onContinue={handleContinue}
+                        />
+                    )}
+                </div>
             )}
         </div>
     );
