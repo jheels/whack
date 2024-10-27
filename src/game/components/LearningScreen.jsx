@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-// src/components/LearningPage.tsx
+// src/components/LearningPage.jsx
 import React, { useState, useRef } from 'react';
 
 export const LearningPage = ({
@@ -48,56 +48,53 @@ export const LearningPage = ({
     };
 
     return (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4" >
-            <div className="bg-white rounded-lg max-w-3xl w-full p-6 space-y-6" >
-                <h2 className="text-2xl font-bold" > {page.title} </h2>
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4">
+            <div className="bg-pixelBackground border-4 border-pixelBorder border-dashed rounded-lg max-w-3xl w-full p-6 space-y-6">
+                <h2 className="text-2xl font-pixel text-pixelText">{page.title}</h2>
 
-                < div className="space-y-4" >
-                    <div className="text-lg" >
-                        {
-                            textParts.map((part, index) => (
-                                <React.Fragment key={index} >
-                                    {part}
-                                    {
-                                        index < textParts.length - 1 && (
-                                            <span
-                                                className="mx-2 px-4 py-1 border-2 border-dashed border-gray-300 min-w-[100px] inline-block"
-                                                onDragOver={(e) => e.preventDefault()}
-                                                onDrop={() => handleDrop(index)}
-                                            >
-                                                {filledBlanks[index] || ''}
-                                            </span>
-                                        )}
-                                </React.Fragment>
-                            ))}
+                <div className="space-y-4">
+                    <div className="text-lg font-pixel text-pixelText">
+                        {textParts.map((part, index) => (
+                            <React.Fragment key={index}>
+                                {part}
+                                {index < textParts.length - 1 && (
+                                    <span
+                                        className="mx-2 px-4 py-1 border-2 border-dashed border-pixelBorder min-w-[100px] inline-block"
+                                        onDragOver={(e) => e.preventDefault()}
+                                        onDrop={() => handleDrop(index)}
+                                    >
+                                        {filledBlanks[index] || ''}
+                                    </span>
+                                )}
+                            </React.Fragment>
+                        ))}
                     </div>
 
-                    < div className="flex flex-wrap gap-2 p-4 bg-gray-50 rounded" >
-                        {
-                            words.map(word => (
-                                <div
-                                    key={word.id}
-                                    draggable
-                                    onDragStart={() => handleDragStart(word)}
-                                    className={`px-3 py-1 bg-blue-100 rounded cursor-move
-                                    ${Object.values(filledBlanks).includes(word.text) ? 'opacity-50' : ''}`}
-                                >
-                                    {word.text}
-                                </div>
-                            ))}
+                    <div className="flex flex-wrap gap-2 p-4 bg-pixelBackground rounded">
+                        {words.map(word => (
+                            <div
+                                key={word.id}
+                                draggable
+                                onDragStart={() => handleDragStart(word)}
+                                className={`px-3 py-1 bg-pixelBackground border-2 border-pixelBorder rounded cursor-move font-pixel text-pixelText
+                                ${Object.values(filledBlanks).includes(word.text) ? 'opacity-50' : ''}`}
+                            >
+                                {word.text}
+                            </div>
+                        ))}
                     </div>
                 </div>
 
-                < div className="flex justify-between" >
+                <div className="flex justify-between">
                     <button
                         onClick={onBack}
-                        className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded"
+                        className="px-4 py-2 font-pixel text-pixelText bg-pixelBackground border-2 border-pixelBorder hover:border-pixelHover hover:text-pixelHover active:bg-pixelHover rounded"
                     >
                         Back
                     </button>
-                    < button
+                    <button
                         onClick={checkAnswers}
-                        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                        className="px-4 py-2 font-pixel text-pixelText bg-pixelBackground border-2 border-pixelBorder hover:border-pixelHover hover:text-pixelHover active:bg-pixelHover rounded"
                     >
                         Check Answers
                     </button>
@@ -106,4 +103,3 @@ export const LearningPage = ({
         </div>
     );
 };
-
