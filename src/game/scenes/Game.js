@@ -9,22 +9,108 @@ export class Game extends Scene {
         // Load the TMX/TMJ file and tileset images
         
         this.load.image('tiles', 'assets/tiles.png'); // Load the tileset image
-        this.load.tilemapTiledJSON('map', 'assets/map.json'); // or 'assets/map.tmj'
+        this.load.tilemapTiledJSON('map', 'assets/map.json'); // or 'assets/map.tmj
+
+        this.load.spritesheet('character', 'assets/character.png', { 
+            frameWidth: 16,  // Adjust if your sprite size is different
+            frameHeight: 16  // Adjust if your sprite size is different
+        });
+
+        
     }
 
     create() {
+        // Create the tile map and layers
+        
+        const map = this.make.tilemap({ key: 'map' });
+        const tileset = map.addTilesetImage('tiles', 'tiles');
+        const scaleX = this.scale.width / map.widthInPixels;
+        const scaleY = this.scale.height / map.heightInPixels;
+
+        const groundLayer = map.createLayer('Tile Layer 1', tileset);
+        groundLayer.setScale(scaleX, scaleY);
+
+        const foregroundLayer = map.createLayer('Tile Layer 2', tileset);
+        foregroundLayer.setScale(scaleX, scaleY);
+
+        const backupLayer = map.createLayer('Tile Layer 3', tileset);
+        backupLayer.setScale(scaleX, scaleY);
+
+        const extraLayer = map.createLayer('Tile Layer 4', tileset);
+        extraLayer.setScale(scaleX, scaleY);
 
         // Add a sprite and enable movement
-        this.player = this.physics.add.sprite(100, 100, 'sprite');
+        const graphics = this.add.graphics();
+        graphics.fillStyle(0xff0000, 1); // Red color
+        graphics.fillRect(0, 0, 20, 40); 
+        graphics.generateTexture('rectangle', 50, 100);
+        graphics.destroy(); // Clean up the graphics object
+        this.anims.create({
+            key: 'walk-down',
+            frames: this.anims.generateFrameNumbers('character', { start: 0, end: 3 }),
+            frameRate: 8,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'walk-up',
+            frames: this.anims.generateFrameNumbers('character', { start: 4, end: 7 }),
+            frameRate: 8,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'walk-right',
+            frames: this.anims.generateFrameNumbers('character', { start: 8, end: 11 }),
+            frameRate: 8,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'walk-left',
+            frames: this.anims.generateFrameNumbers('character', { start: 12, end: 15 }),
+            frameRate: 8,
+            repeat: -1
+        });
+
+    
+        this.player = this.physics.add.sprite(100, 550, 'character');
+        this.player.setScale(2);
         this.cursors = this.input.keyboard.createCursorKeys();
+    
+        // Set up the camera to follow the player
+        this.cameras.main.startFollow(this.player);
+
+        this.cameras.main.setBounds(0, 0, 1344, 1104);
 
         
-    
         // Add a sprite and enable movement
     }
 
 
-    update() {
-        // Handle player movement
+update() {
+    // Reset velocity
+    this.player.body.setVelocity(0);
+
+    const speed = 160;
+    // Handle movement and animations
+    if (this.cursors.left.isDown) {
+        this.player.body.setVelocityX(-speed);
+        this.player.anims.play('walk-left', true);
+    } else if (this.cursors.right.isDown) {
+        this.player.body.setVelocityX(speed);
+        this.player.anims.play('walk-right', true);
+    } else if (this.cursors.up.isDown) {
+        this.player.body.setVelocityY(-speed);
+        this.player.anims.play('walk-up', true);
+    } else if (this.cursors.down.isDown) {
+        this.player.body.setVelocityY(speed);
+        this.player.anims.play('walk-down', true);
+    } else {
+        // Stop animation if not moving
+        this.player.anims.stop();
     }
-}
+    
+    // Keep camera zoom
+    this.cameras.main.setZoom(1.5);
+}}
