@@ -19,6 +19,7 @@ export class Boot extends Scene
         this.load.tilemapTiledJSON('map', 'assets/map.json'); // or 'assets/map.tmj'
         this.load.audio('backgroundMusic', 'assets/bgm.mp3'); // Adjust the path and file name
         this.load.audio('levelUpSFX', 'assets/level-up.mp3');
+        this.load.audio('wrong', 'assets/wrong.mp3');
     }
 
     create ()
