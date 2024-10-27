@@ -15,6 +15,11 @@ export class Game extends Scene {
             frameWidth: 16, // Adjust if your sprite size is different
             frameHeight: 16, // Adjust if your sprite size is different
         });
+
+        this.load.spritesheet("idlechar", "assets/idle.png", {
+            frameWidth: 16, // Adjust if your sprite size is different
+            frameHeight: 16, // Adjust if your sprite size is different
+        });
     }
 
     create() {
@@ -99,6 +104,50 @@ export class Game extends Scene {
             repeat: -1,
         });
 
+        this.anims.create({
+            key: "idle-down",
+            frames: this.anims.generateFrameNumbers("idlechar", {
+                start: 0,
+                end: 1,
+            }),
+            frameRate: 2,
+            repeat: -1,
+        });
+
+        this.anims.create({
+            key: "idle-up",
+            frames: this.anims.generateFrameNumbers("idlechar", {
+                start: 4,
+                end: 5,
+            }),
+            frameRate: 2,
+            repeat: -1,
+        });
+
+
+        this.anims.create({
+            key: "idle-right",
+            frames: this.anims.generateFrameNumbers("idlechar", {
+                start: 8,
+                end: 9,
+            }),
+            frameRate: 2,
+            repeat: -1,
+        });
+
+
+        this.anims.create({
+            key: "idle-left",
+            frames: this.anims.generateFrameNumbers("idlechar", {
+                start: 12,
+                end: 13,
+            }),
+            frameRate: 2,
+            repeat: -1,
+        });
+
+
+
         this.player = this.physics.add.sprite(100, 550, "character");
         this.player.setScale(2.5);
         this.player.body.setSize(this.player.width * 0.5, this.player.height * 0.5);
@@ -136,28 +185,55 @@ export class Game extends Scene {
     update() {
         // Reset velocity
         this.player.body.setVelocity(0);
-
-        const speed = 400;
+    
+        const speed = 160;
+        let moving = false;
+        let lastDirection = this.player.lastDirection || 'down';
+    
         // Handle movement and animations
         if (this.cursors.left.isDown) {
             this.player.body.setVelocityX(-speed);
-            this.player.anims.play("walk-left", true);
+            this.player.anims.play('walk-left', true);
+            moving = true;
+            lastDirection = 'left';
         } else if (this.cursors.right.isDown) {
             this.player.body.setVelocityX(speed);
-            this.player.anims.play("walk-right", true);
+            this.player.anims.play('walk-right', true);
+            moving = true;
+            lastDirection = 'right';
         } else if (this.cursors.up.isDown) {
             this.player.body.setVelocityY(-speed);
-            this.player.anims.play("walk-up", true);
+            this.player.anims.play('walk-up', true);
+            moving = true;
+            lastDirection = 'up';
         } else if (this.cursors.down.isDown) {
             this.player.body.setVelocityY(speed);
-            this.player.anims.play("walk-down", true);
-        } else {
-            // Stop animation if not moving
-            this.player.anims.stop();
+            this.player.anims.play('walk-down', true);
+            moving = true;
+            lastDirection = 'down';
         }
-
-        // Keep camera zoom
-        this.cameras.main.setZoom(1.5);
+    
+        // Play idle animation if not moving
+        if (!moving) {
+            switch (lastDirection) {
+                case 'left':
+                    this.player.anims.play('idle-left', true);
+                    break;
+                case 'right':
+                    this.player.anims.play('idle-right', true);
+                    break;
+                case 'up':
+                    this.player.anims.play('idle-up', true);
+                    break;
+                case 'down':
+                default:
+                    this.player.anims.play('idle-down', true);
+                    break;
+            }
+        }
+    
+        // Store the last direction
+        this.player.lastDirection = lastDirection;
     }
 }
 
