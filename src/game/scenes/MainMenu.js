@@ -84,6 +84,27 @@ export class MainMenu extends Scene
         buttonText.on('pointerout', function () {
             buttonText.setStyle({ fill: '#ffffff' }); // Revert to white
         });
+
+        // Play the background music
+        var music = this.sound.add('backgroundMusic'); // Create a sound object
+        music.play({ loop: true }); // Play the music in a loop
+
+        // Adjust Volume
+        music.setVolume(0.5); // Set the volume (0.0 to 1.0)
+    
+        var muteButton = this.add.sprite(1250, 100, 'unmuteIcon'); // Position as needed
+        muteButton.setInteractive(); // Make it interactive
+    
+        // Mute button click handler
+        muteButton.on('pointerdown', function () {
+            if (music.isPlaying) {
+                music.pause();
+                muteButton.setTexture('muteIcon'); // Change icon to mute
+            } else {
+                music.resume();
+                muteButton.setTexture('unmuteIcon'); // Change icon to unmute
+            }
+        });
         
         EventBus.emit('current-scene-ready', this);
     }
