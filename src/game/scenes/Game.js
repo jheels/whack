@@ -1,6 +1,7 @@
 import { Scene } from "phaser";
 
 export class Game extends Scene {
+
     constructor() {
         super("Game");
     }
@@ -108,6 +109,13 @@ export class Game extends Scene {
         this.physics.world.debugGraphic.visible = true;
         this.cursors = this.input.keyboard.createCursorKeys();
 
+        this.WASDkeys = this.input.keyboard.addKeys({
+            up: Phaser.Input.Keyboard.KeyCodes.W,
+            down: Phaser.Input.Keyboard.KeyCodes.S,
+            left: Phaser.Input.Keyboard.KeyCodes.A,
+            right: Phaser.Input.Keyboard.KeyCodes.D
+        });
+
         // Set up the camera to follow the player
         this.cameras.main.startFollow(this.player);
 
@@ -138,23 +146,47 @@ export class Game extends Scene {
         this.player.body.setVelocity(0);
 
         const speed = 400;
-        // Handle movement and animations
-        if (this.cursors.left.isDown) {
-            this.player.body.setVelocityX(-speed);
-            this.player.anims.play("walk-left", true);
-        } else if (this.cursors.right.isDown) {
-            this.player.body.setVelocityX(speed);
-            this.player.anims.play("walk-right", true);
-        } else if (this.cursors.up.isDown) {
-            this.player.body.setVelocityY(-speed);
-            this.player.anims.play("walk-up", true);
-        } else if (this.cursors.down.isDown) {
-            this.player.body.setVelocityY(speed);
-            this.player.anims.play("walk-down", true);
+
+        if (this.cursors.left.isDown || this.cursors.right.isDown || this.cursors.up.isDown || this.cursors.down.isDown
+            || this.WASDkeys.left.isDown || this.WASDkeys.right.isDown || this.WASDkeys.up.isDown || this.WASDkeys.down.isDown
+        )
+        {
+            if (this.cursors.left.isDown) {
+                this.player.body.setVelocityX(-speed);
+                this.player.anims.play("walk-left", true);
+            } else if (this.cursors.right.isDown) {
+                this.player.body.setVelocityX(speed);
+                this.player.anims.play("walk-right", true);
+            }
+
+            if (this.cursors.up.isDown) {
+                this.player.body.setVelocityY(-speed);
+                this.player.anims.play("walk-up", true);
+            } else if (this.cursors.down.isDown) {
+                this.player.body.setVelocityY(speed);
+                this.player.anims.play("walk-down", true);
+            } 
+
+            if (this.WASDkeys.left.isDown) {
+                this.player.body.setVelocityX(-speed);
+                this.player.anims.play("walk-left", true);
+            } else if (this.WASDkeys.right.isDown) {
+                this.player.body.setVelocityX(speed);
+                this.player.anims.play("walk-right", true);
+            }
+
+            if (this.WASDkeys.up.isDown) {
+                this.player.body.setVelocityY(-speed);
+                this.player.anims.play("walk-up", true);
+            } else if (this.WASDkeys.down.isDown) {
+                this.player.body.setVelocityY(speed);
+                this.player.anims.play("walk-down", true);
+            } 
         } else {
-            // Stop animation if not moving
             this.player.anims.stop();
         }
+
+
 
         // Keep camera zoom
         this.cameras.main.setZoom(1.5);
