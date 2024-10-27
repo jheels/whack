@@ -49,9 +49,15 @@ export const sampleScenario = {
         {
             pageNumber: 1,
             title: "Understanding Income",
-            text: "The first step in budgeting is understanding your take-home pay. After taxes and deductions, your monthly income will be different from your annual ___.",
-            correctOrder: ["salary"],
+            text: "The first step in ___ is understanding your take-home pay. After taxes and deductions, your monthly income will be different from your annual ___. This difference can significantly impact your budgeting plans, as it’s essential to know exactly how much money you have available each month for expenses, ___, and discretionary spending. Additionally, consider other sources of income, such as ___, freelance work, or investment earnings, which can further affect your financial landscape.",
+            correctOrder: ["budgeting","salary","savings","bonuses"],
         },
+        // {
+        //     pageNumber: 2,
+        //     title: "Emergency Funds",
+        //     text: "An emergency fund is essential for any budget, serving as a safety net for unexpected ___. Aim to save three to six months' worth of living costs. To build this fund, ___ a specific amount each month from your budget. Start by reviewing your budget to cut ___ expenses. Having this fund reduces financial stress and helps you manage ___ expenses more easily.",
+        //     correctOrder: ["expenses","save", "unnecessary", "unforeseen"]
+        // }
     ],
     adviceOptions: sampleAdviceOptions
 };
