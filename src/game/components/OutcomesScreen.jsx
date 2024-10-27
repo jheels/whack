@@ -33,42 +33,36 @@ export const OutcomeScreen = ({ outcome, onRestart, onContinue }) => {
                         {isOptimal ? "Great job!" : "Room for improvement"}
                     </h2>
 
-                    <div className="p-4 bg-white/10 rounded-lg">
-                        <p className="text-lg text-pixelText mb-4">{outcome?.description}</p>
+                    <div className="p-4">
+                        <p className="text-lg text-pixelText mb-4">{outcome.outcomes.immediate}</p>
+                        <p className="text-lg text-pixelText mb-4">{outcome.outcomes.longTerm}</p>
+                        {/* <hr></hr> */}
 
                         {!isOptimal && (
-                            <div className="text-pixelText/80 italic mb-4">
-                                <p>There might be a better way to handle this situation.</p>
+                            <div className="text-pixelText/80 italic align-bottom text-s mt-16">
                                 <p>Would you like to try a different approach?</p>
                             </div>
                         )}
                     </div>
+                </div>
 
-                    {outcome?.feedback && (
-                        <div className="p-4 bg-white/10 rounded-lg">
-                            <h3 className="text-xl font-pixel text-pixelText mb-2">Feedback</h3>
-                            <p className="text-pixelText">{outcome.outcomes.immediate}</p>
-                        </div>
+                <div className="flex justify-between pt-0">
+                    {!isOptimal && (
+                        <button
+                            onClick={onRestart}
+                            className="px-4 py-2 font-pixel text-pixelText bg-pixelBackground border-2 border-pixelBorder hover:border-pixelHover hover:text-pixelHover active:bg-pixelHover rounded"
+                        >
+                            Try Again
+                        </button>
                     )}
-            </div>
-
-            <div className="flex justify-between pt-4">
-                {!isOptimal && (
                     <button
-                        onClick={onRestart}
-                        className="px-4 py-2 font-pixel text-pixelText bg-pixelBackground border-2 border-pixelBorder hover:border-pixelHover hover:text-pixelHover active:bg-pixelHover rounded"
+                        onClick={onContinue}
+                        className="px-4 py-2 font-pixel text-pixelText bg-pixelBackground border-2 border-pixelBorder hover:border-pixelHover hover:text-pixelHover active:bg-pixelHover rounded ml-auto"
                     >
-                        Try Again
+                        {isOptimal ? "Continue" : "Continue Anyway"}
                     </button>
-                )}
-                <button
-                    onClick={onContinue}
-                    className="px-4 py-2 font-pixel text-pixelText bg-pixelBackground border-2 border-pixelBorder hover:border-pixelHover hover:text-pixelHover active:bg-pixelHover rounded ml-auto"
-                >
-                    {isOptimal ? "Continue" : "Continue Anyway"}
-                </button>
+                </div>
             </div>
-        </div>
         </div >
     );
 };
