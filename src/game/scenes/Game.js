@@ -193,50 +193,62 @@ export class Game extends Scene {
     update() {
         // Reset velocity
         this.player.body.setVelocity(0);
-
-        const speed = 400;
-
+    
+        const speed = 300;
+        let moving = false;
+        let lastDirection = this.player.lastDirection || 'down';
+    
+        // Handle movement and animations
         if (this.cursors.left.isDown || this.cursors.right.isDown || this.cursors.up.isDown || this.cursors.down.isDown
             || this.WASDkeys.left.isDown || this.WASDkeys.right.isDown || this.WASDkeys.up.isDown || this.WASDkeys.down.isDown
-        )
-        {
-            if (this.cursors.left.isDown) {
+        ) {
+            if (this.cursors.left.isDown || this.WASDkeys.left.isDown) {
                 this.player.body.setVelocityX(-speed);
                 this.player.anims.play("walk-left", true);
-            } else if (this.cursors.right.isDown) {
+                lastDirection = 'left';
+                moving = true;
+            } else if (this.cursors.right.isDown || this.WASDkeys.right.isDown) {
                 this.player.body.setVelocityX(speed);
                 this.player.anims.play("walk-right", true);
+                lastDirection = 'right';
+                moving = true;
             }
-
-            if (this.cursors.up.isDown) {
+    
+            if (this.cursors.up.isDown || this.WASDkeys.up.isDown) {
                 this.player.body.setVelocityY(-speed);
                 this.player.anims.play("walk-up", true);
-            } else if (this.cursors.down.isDown) {
+                lastDirection = 'up';
+                moving = true;
+            } else if (this.cursors.down.isDown || this.WASDkeys.down.isDown) {
                 this.player.body.setVelocityY(speed);
                 this.player.anims.play("walk-down", true);
-            } 
-
-            if (this.WASDkeys.left.isDown) {
-                this.player.body.setVelocityX(-speed);
-                this.player.anims.play("walk-left", true);
-            } else if (this.WASDkeys.right.isDown) {
-                this.player.body.setVelocityX(speed);
-                this.player.anims.play("walk-right", true);
+                lastDirection = 'down';
+                moving = true;
             }
-
-            if (this.WASDkeys.up.isDown) {
-                this.player.body.setVelocityY(-speed);
-                this.player.anims.play("walk-up", true);
-            } else if (this.WASDkeys.down.isDown) {
-                this.player.body.setVelocityY(speed);
-                this.player.anims.play("walk-down", true);
-            } 
-        } else {
-            this.player.anims.stop();
         }
-
-
-
+    
+        // Play idle animation if not moving
+        if (!moving) {
+            switch (lastDirection) {
+                case 'left':
+                    this.player.anims.play('idle-left', true);
+                    break;
+                case 'right':
+                    this.player.anims.play('idle-right', true);
+                    break;
+                case 'up':
+                    this.player.anims.play('idle-up', true);
+                    break;
+                case 'down':
+                default:
+                    this.player.anims.play('idle-down', true);
+                    break;
+            }
+        }
+    
+        // Store the last direction
+        this.player.lastDirection = lastDirection;
+    
         // Keep camera zoom
         this.cameras.main.setZoom(1.5);
     }
