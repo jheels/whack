@@ -1,94 +1,50 @@
-import { useRef, useState } from 'react';
-
 import Phaser from 'phaser';
+import { useRef, useState } from 'react';
 import { PhaserGame } from './game/PhaserGame';
+import { ScenarioManager } from './game/components/ScenarioManager';
+import { sampleScenario } from '../public/static/scenario';
 
-function App ()
-{
-    // The sprite can only be moved in the MainMenu Scene
-    const [canMoveSprite, setCanMoveSprite] = useState(true);
-    
-    //  References to the PhaserGame component (game and scene are exposed)
-    const phaserRef = useRef();
-    const [spritePosition, setSpritePosition] = useState({ x: 0, y: 0 });
-
-    const changeScene = () => {
-
-        const scene = phaserRef.current.scene;
-
-        if (scene)
-        {
-            scene.changeScene();
-        }
-    }
-
-    const moveSprite = () => {
-
-        const scene = phaserRef.current.scene;
-
-        if (scene && scene.scene.key === 'MainMenu')
-        {
-            // Get the update logo position
-            scene.moveLogo(({ x, y }) => {
-
-                setSpritePosition({ x, y });
-
-            });
-        }
-    }
-
-    const addSprite = () => {
-
-        const scene = phaserRef.current.scene;
-
-        if (scene)
-        {
-            // Add more stars
-            const x = Phaser.Math.Between(64, scene.scale.width - 64);
-            const y = Phaser.Math.Between(64, scene.scale.height - 64);
-
-            //  `add.sprite` is a Phaser GameObjectFactory method and it returns a Sprite Game Object instance
-            const star = scene.add.sprite(x, y, 'star');
-
-            //  ... which you can then act upon. Here we create a Phaser Tween to fade the star sprite in and out.
-            //  You could, of course, do this from within the Phaser Scene code, but this is just an example
-            //  showing that Phaser objects and systems can be acted upon from outside of Phaser itself.
-            scene.add.tween({
-                targets: star,
-                duration: 500 + Math.random() * 1000,
-                alpha: 0,
-                yoyo: true,
-                repeat: -1
-            });
-        }
-    }
-
-    // Event emitted from the PhaserGame component
-    const currentScene = (scene) => {
-
-        setCanMoveSprite(scene.scene.key !== 'MainMenu');
-        
-    }
+// Main App Component
+const App = () => {
+    const [showScenario, setShowScenario] = useState(false);
 
     return (
-        <div id="app">
-            <PhaserGame ref={phaserRef} currentActiveScene={currentScene} />
-            <div>
-                <div>
-                    <button className="button" onClick={changeScene}>Change Scene</button>
-                </div>
-                <div>
-                    <button disabled={canMoveSprite} className="button" onClick={moveSprite}>Toggle Movement</button>
-                </div>
-                <div className="spritePosition">Sprite Position:
-                    <pre>{`{\n  x: ${spritePosition.x}\n  y: ${spritePosition.y}\n}`}</pre>
-                </div>
-                <div>
-                    <button className="button" onClick={addSprite}>Add New Sprite</button>
+        <div className="min-h-screen bg-gray-100 p-8">
+            {/* Main content */}
+            <div className="max-w-4xl bg-blue-500 mx-auto">
+                <h1 className="text-3xl font-bold mb-6">Financial Advisor Game</h1>
+
+                {/* Sample content that will be overlaid */}
+                <div className="bg-white rounded-lg p-6 shadow-lg">
+                    <h2 className="text-xl font-semibold mb-4">Welcome to the Financial Office</h2>
+                    <p className="text-gray-600 mb-4">
+                        Here you can help people with their financial decisions.
+                        Click the button below to start helping Sarah with her budgeting.
+                    </p>
+                    <button
+                        onClick={() => setShowScenario(true)}
+                        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                    >
+                        Talk to Sarah
+                    </button>
                 </div>
             </div>
-        </div>
-    )
-}
+
+            {/* Scenario Manager Overlay */}
+            {
+                showScenario && (
+                    <ScenarioManager
+                        scenario={sampleScenario}
+                        onComplete={() => {
+                            setShowScenario(false);
+                            // Handle scenario completion
+                        }}
+                        onClose={() => setShowScenario(false)}
+                    />
+                )
+            }
+        </div >
+    );
+};
 
 export default App
