@@ -53,7 +53,7 @@ export class Game extends Scene {
             }
         });
 
-        muteButton.scale(0.5);
+        muteButton.setScale(0.5);
 
         // Create the tile map and layers
         this.anims.create({
