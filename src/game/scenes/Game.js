@@ -138,21 +138,25 @@ export class Game extends Scene {
         this.player.body.setVelocity(0);
 
         const speed = 400;
-        // Handle movement and animations
-        if (this.cursors.left.isDown) {
-            this.player.body.setVelocityX(-speed);
-            this.player.anims.play("walk-left", true);
-        } else if (this.cursors.right.isDown) {
-            this.player.body.setVelocityX(speed);
-            this.player.anims.play("walk-right", true);
-        } else if (this.cursors.up.isDown) {
-            this.player.body.setVelocityY(-speed);
-            this.player.anims.play("walk-up", true);
-        } else if (this.cursors.down.isDown) {
-            this.player.body.setVelocityY(speed);
-            this.player.anims.play("walk-down", true);
+
+        if (this.cursors.left.isDown || this.cursors.right.isDown || this.cursors.up.isDown || this.cursors.down.isDown)
+        {
+            if (this.cursors.left.isDown) {
+                this.player.body.setVelocityX(-speed);
+                this.player.anims.play("walk-left", true);
+            } else if (this.cursors.right.isDown) {
+                this.player.body.setVelocityX(speed);
+                this.player.anims.play("walk-right", true);
+            }
+
+            if (this.cursors.up.isDown) {
+                this.player.body.setVelocityY(-speed);
+                this.player.anims.play("walk-up", true);
+            } else if (this.cursors.down.isDown) {
+                this.player.body.setVelocityY(speed);
+                this.player.anims.play("walk-down", true);
+            } 
         } else {
-            // Stop animation if not moving
             this.player.anims.stop();
         }
 
