@@ -16,17 +16,16 @@ export const AdviceScreen = ({
                 </div>
 
                 <div className="space-y-4">
-                    {scenario.adviceOptions.map(option => (
+                    {Array.from(scenario.adviceOptions.values()).map(option => (
                         <button
                             key={option.id}
-                            onClick={() => onSelectAdvice(option)}
+                            onClick={() => onSelectAdvice(option.id)}  // Changed to pass just the ID
                             className="w-full p-4 text-left border rounded hover:bg-gray-50 transition-colors"
                         >
                             <p className="font-medium">{option.text}</p>
                         </button>
                     ))}
                 </div>
-
                 <button
                     onClick={onBack}
                     className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded"

@@ -35,7 +35,7 @@ const sampleAdviceOptions = new Map([
 ]);
 
 // Sample scenario with HashMap for advice options
-const sampleScenario = {
+export const sampleScenario = {
     scenarioId: "budget_easy_1",
     unitId: "budgeting",
     difficulty: Difficulty.EASY,
