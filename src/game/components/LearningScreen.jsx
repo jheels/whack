@@ -4,14 +4,14 @@ import React, { useState, useRef } from "react";
 
 export const LearningPage = ({ page, onComplete, onBack }) => {
     const [words] = useState(() =>
-        page.correctOrder.map((word) => ({
+        page.correctOrder.map((x) => x).sort(() => Math.random() - 0.5)
+            .map((word) => ({
             id: crypto.randomUUID(),
             text: word,
         }))
     );
 
     const [answers, setAnswers] = useState(Array(page.correctOrder.length).fill(''));
-    const [filledBlanks, setFilledBlanks] = useState({});
     const draggedWordRef = useRef(null);
 
     // Split text into parts based on underscores
