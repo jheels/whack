@@ -41,24 +41,6 @@ export class Preloader extends Scene
         //  For example, you can define global animations here, so we can use them in other scenes.
 
         //  Move to the MainMenu. You could also swap this for a Scene Transition, such as a camera fade.
-        this.add.image(0, 0, 'tiles')
-        const map = this.make.tilemap({ key: 'map' });
-        const tileset = map.addTilesetImage('tiles', 'tiles');
-        const scaleX = this.scale.width / map.widthInPixels;
-        const scaleY = this.scale.height / map.heightInPixels;
-
-        const groundLayer = map.createLayer('Tile Layer 1', tileset);
-        groundLayer.setScale(scaleX, scaleY);
-
-        const foregroundLayer = map.createLayer('Tile Layer 2', tileset);
-        foregroundLayer.setScale(scaleX, scaleY);
-
-        const backupLayer = map.createLayer('Tile Layer 3', tileset);
-        backupLayer.setScale(scaleX, scaleY);
-
-        const extraLayer = map.createLayer('Tile Layer 4', tileset);
-        extraLayer.setScale(scaleX, scaleY);
-
         this.scene.start('MainMenu');
     }
 }

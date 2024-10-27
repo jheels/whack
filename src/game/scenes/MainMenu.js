@@ -3,7 +3,6 @@ import { Scene } from 'phaser';
 
 export class MainMenu extends Scene
 {
-    logoTween;
 
     constructor ()
     {
@@ -29,9 +28,6 @@ export class MainMenu extends Scene
 
         const extraLayer = map.createLayer('Tile Layer 4', tileset);
         extraLayer.setScale(scaleX, scaleY);
-
-
-        this.logo = this.add.image(x, y, 'logo').setDepth(100);
         
         var graphics = this.add.graphics();
 
@@ -50,6 +46,11 @@ export class MainMenu extends Scene
         // Optionally, add a border or outline
         graphics.lineStyle(4, 0xffffff); // White border
         graphics.strokeRect(x, y, boxWidth, boxHeight);
+        
+        var logo = this.add.image( this.cameras.main.width / 2, // Center X
+            y + 200, 'logo').setDepth(100);
+
+        logo.setOrigin(0.5);
 
         var buttonText = this.add.text(
             this.cameras.main.width / 2, // Center X
@@ -73,7 +74,7 @@ export class MainMenu extends Scene
             buttonText.setStyle({ fill: '#ffffff' }); // Revert to white
             graphics.destroy();  // This removes the overlay graphics
             buttonText.destroy();  // This removes the Play button
-            this.logo.destroy();
+            logo.destroy();
             this.scene.start('Game');
         })
     
