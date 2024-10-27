@@ -198,8 +198,6 @@ export class Game extends Scene {
             this.player.height * 0.25
         );
 
-        this.physics.world.createDebugGraphic();
-        this.physics.world.debugGraphic.visible = true;
         this.cursors = this.input.keyboard.createCursorKeys();
 
         this.WASDkeys = this.input.keyboard.addKeys({
