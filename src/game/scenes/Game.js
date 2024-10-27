@@ -42,6 +42,8 @@ export class Game extends Scene {
         backupLayer.setDepth(0);
 
         var music = this.sound.get("backgroundMusic");
+        var levelUpSFX = this.sound.add('levelUpSFX');
+        levelUpSFX.play();
 
         var muteButton = this.add.sprite(1250, 100, 'unmuteIcon'); // Position as needed
         muteButton.setInteractive(); // Make it interactive
