@@ -15,6 +15,7 @@ for (let index = 0; index < 5; index++) {
 }
 const TopBar = () => {
     const [viewProgress, setViewProgress] = useState(false);
+    console.log(pm.getTotalUnitScenarios(2));
 
     return (
         <div className="absolute left-1/2 transform -translate-x-1/2 top-3">
@@ -22,8 +23,8 @@ const TopBar = () => {
                 className="bg-gray-100"
                 onMouseEnter={() => setViewProgress(true)}
                 onMouseLeave={() => setViewProgress(false)}
-                value={overallValue}
-                max={overallMax}
+                value={2}
+                max={5}
             ></progress>
             {viewProgress && <ProgressPopup />}
         </div>
