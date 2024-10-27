@@ -12,7 +12,7 @@ function App() {
     //  References to the PhaserGame component (game and scene are exposed)
     const phaserRef = useRef();
     const [showScenario, setShowScenario] = useState(false);
-    const [showProgress, setShowProgress] = useState(true);
+    const [showProgress, setShowProgress] = useState(false);
 
     useEffect(() => {
         // Access the Phaser game instance
@@ -24,6 +24,13 @@ function App() {
             setShowScenario(false);
             game.destroy(true);
         };
+    }, []);
+
+    useEffect(() => {
+        const game = phaserRef.current.game;
+        game.events.on("display-progress", () => {
+            setShowProgress(true);
+        });
     }, []);
 
     return (

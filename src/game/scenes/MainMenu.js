@@ -120,7 +120,7 @@ export class MainMenu extends Scene {
                 progressButtonText.destroy();
 
                 // emit display-progress event
-                EventBus.emit("display-progress");
+                this.game.events.emit("display-progress");
             },
             this
         );
