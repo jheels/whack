@@ -59,7 +59,7 @@ export const ScenarioManager = ({ scenario, onComplete, onClose }) => {
 
         // Get the outcome from the static database
         const selectedAdvice = scenario.adviceOptions.get(adviceId.id);
-        setSelectedOutcome(selectedAdvice.outcomes);
+        setSelectedOutcome(selectedAdvice);
         setIsLoading(false);
     };
 
