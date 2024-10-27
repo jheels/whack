@@ -41,21 +41,23 @@ export class Game extends Scene {
         // this.player = this.physics.add.sprite(100, 100, "sprite");
         // this.cursors = this.input.keyboard.createCursorKeys();
 
-        // Add an NPC sprite
-        this.npc = this.physics.add.sprite(200, 400, "npc");
-        this.npc.state = "idle";
-        this.npc2 = this.physics.add.sprite(300, 400, "npc");
+        this.npc = this.physics.add.sprite(200, 520, "npc");
+        this.npc2 = this.physics.add.sprite(300, 530, "npc");
+        this.npc.state = "free";
+        this.npc2.state = "free";
         this.npc.setScale(2);
         this.npc2.setScale(2);
+        this.npc.body.immovable = true;
+        this.npc2.body.immovable = true;
 
-        console.log(this.npc);
-
-        // Add collision between the player and the NPC
-        // this.physics.add.collider(this.player, this.npc);
+        this.physics.add.collider(this.player, this.npc, runQuest);
+        this.physics.add.collider(this.player, this.npc2, runQuest);
     }
 
     update() {
         // Handle player movement
     }
+
+    runQuest(player, npc) {}
 }
 
