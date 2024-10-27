@@ -15,13 +15,11 @@ export class Game extends Scene {
             frameWidth: 16,  // Adjust if your sprite size is different
             frameHeight: 16  // Adjust if your sprite size is different
         });
-
-        
     }
 
     create() {
-        // Create the tile map and layers
-        
+
+        this.add.image(0, 0, 'tiles')
         const map = this.make.tilemap({ key: 'map' });
         const tileset = map.addTilesetImage('tiles', 'tiles');
         const scaleX = this.scale.width / map.widthInPixels;
@@ -39,12 +37,7 @@ export class Game extends Scene {
         const extraLayer = map.createLayer('Tile Layer 4', tileset);
         extraLayer.setScale(scaleX, scaleY);
 
-        // Add a sprite and enable movement
-        const graphics = this.add.graphics();
-        graphics.fillStyle(0xff0000, 1); // Red color
-        graphics.fillRect(0, 0, 20, 40); 
-        graphics.generateTexture('rectangle', 50, 100);
-        graphics.destroy(); // Clean up the graphics object
+        // Create the tile map and layers
         this.anims.create({
             key: 'walk-down',
             frames: this.anims.generateFrameNumbers('character', { start: 0, end: 3 }),
@@ -85,6 +78,7 @@ export class Game extends Scene {
 
         
         // Add a sprite and enable movement
+
     }
 
 
