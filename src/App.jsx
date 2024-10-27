@@ -6,6 +6,7 @@ import { sampleScenario } from "../public/static/scenario";
 
 import { PhaserGame } from "./game/PhaserGame";
 import "./App.css";
+import { ProgressManager } from "./game/components/ProgressManager";
 
 function App() {
     //  References to the PhaserGame component (game and scene are exposed)
@@ -20,7 +21,10 @@ function App() {
                         scenario={sampleScenario}
                         onComplete={() => {
                             setShowScenario(false);
-                            // Handle scenario completion
+                            // To just see current state:
+                            const manager = ProgressManager.getInstance();
+                            manager.debug();
+
                         }}
                         onClose={() => setShowScenario(false)}
                     />
