@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { ScenarioManager } from "./game/components/ScenarioManager";
 import { sampleScenario } from "../public/static/scenario";
@@ -10,7 +10,19 @@ import "./App.css";
 function App() {
     //  References to the PhaserGame component (game and scene are exposed)
     const phaserRef = useRef();
-    const [showScenario, setShowScenario] = useState(true);
+    const [showScenario, setShowScenario] = useState(false);
+
+    useEffect(() => {
+        // Access the Phaser game instance
+        const game = phaserRef.current.game;
+        game.events.on("interaction-triggered", () => {
+            setShowScenario(true);
+        });
+        return () => {
+            setShowScenario(false);
+            // game.destroy(true)
+        };
+    }, []);
 
     return (
         <div id="app">
