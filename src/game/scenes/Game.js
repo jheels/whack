@@ -7,9 +7,6 @@ export class Game extends Scene {
 
     preload() {
         // Load the TMX/TMJ file and tileset images
-
-        this.load.image("tiles", "assets/tiles.png"); // Load the tileset image
-        this.load.tilemapTiledJSON("map", "assets/map.json"); // or 'assets/map.tmj'
         this.load.spritesheet("npc", "assets/global.png", {
             frameWidth: 32, // Adjust based on your sprite dimensions
             frameHeight: 32,

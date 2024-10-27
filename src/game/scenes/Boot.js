@@ -13,6 +13,7 @@ export class Boot extends Scene
         //  The smaller the file size of the assets, the better, as the Boot Scene itself has no preloader.
         this.load.image('tiles', 'assets/tiles.png'); // Load the tileset image
         this.load.tilemapTiledJSON('map', 'assets/map.json'); // or 'assets/map.tmj'
+        this.load.audio('backgroundMusic', 'assets/bgm.mp3'); // Adjust the path and file name
     }
 
     create ()
