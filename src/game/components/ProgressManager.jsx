@@ -88,69 +88,69 @@ export class ProgressManager {
 
     debug() {
         console.log(this.gameProgress);
-        // console.group('🔍 Progress Manager Debug Info');
-        //
-        // // Overall Progress Stats
-        // console.group('📊 Overall Statistics');
-        // console.log('Total Units Tracked:', this.gameProgress.unitsProgress.size);
-        // console.log('Total Scenarios Completed:', this.gameProgress.scenariosProgress.size);
-        // console.groupEnd();
-        //
-        // // Unit Progress Details
-        // console.group('📚 Unit Progress');
-        // this.gameProgress.unitsProgress.forEach((progress, unitId) => {
-        //     console.group(`Unit: ${unitId}`);
-        //     console.log('Completed Tasks:', progress.completedTasks);
-        //     console.log('Total Available Tasks:', this.getTotalUnitScenarios(unitId));
-        //     console.log('Completion Rate:', `${((progress.completedTasks / this.getTotalUnitScenarios(unitId)) * 100).toFixed(1)}%`);
-        //     console.log('Badge Earned:', progress.badgeEarned ? '✅' : '❌');
-        //     console.groupEnd();
-        // });
-        // console.groupEnd();
-        //
-        // // Scenario Choices
-        // console.group('🎯 Scenario Choices');
-        // this.gameProgress.scenariosProgress.forEach((choiceId, scenarioId) => {
-        //     const scenario = scenarios.get(scenarioId);
-        //     const choice = scenario?.adviceOptions.get(choiceId);
-        //     console.group(`Scenario: ${scenarioId}`);
-        //     console.log('Chosen Advice ID:', choiceId);
-        //     console.log('Advice Rank:', choice?.rank || 'Unknown');
-        //     console.log('Unit:', scenario?.unitId || 'Unknown');
-        //     console.groupEnd();
-        // });
-        // console.groupEnd();
-        //
-        // // Earned Badges Summary
-        // console.group('🏆 Earned Badges');
-        // let earnedBadgesCount = 0;
-        // badges.forEach((badge, unitId) => {
-        //     const earned = this.hasBadge(unitId);
-        //     console.log(`${badge.name}: ${earned ? '✅' : '❌'}`);
-        //     if (earned) earnedBadgesCount++;
-        // });
-        // console.log(`Total Badges Earned: ${earnedBadgesCount}/${badges.size}`);
-        // console.groupEnd();
-        //
-        // console.groupEnd();
-        //
-        // // Return a summary object for testing purposes
-        // return {
-        //     totalUnits: this.gameProgress.unitsProgress.size,
-        //     totalScenarios: this.gameProgress.scenariosProgress.size,
-        //     totalBadges: earnedBadgesCount,
-        //     unitProgress: Array.from(this.gameProgress.unitsProgress.entries()).map(([unitId, progress]) => ({
-        //         unitId,
-        //         completedTasks: progress.completedTasks,
-        //         totalTasks: this.getTotalUnitScenarios(unitId),
-        //         badgeEarned: progress.badgeEarned
-        //     })),
-        //     scenarioChoices: Array.from(this.gameProgress.scenariosProgress.entries()).map(([scenarioId, choiceId]) => ({
-        //         scenarioId,
-        //         choiceId,
-        //         unitId: scenarios.get(scenarioId)?.unitId
-        //     }))
-        // };
+        console.group('🔍 Progress Manager Debug Info');
+
+        // Overall Progress Stats
+        console.group('📊 Overall Statistics');
+        console.log('Total Units Tracked:', this.gameProgress.unitsProgress.size);
+        console.log('Total Scenarios Tracked:', this.gameProgress.scenariosProgress.size);
+        console.groupEnd();
+
+        // Unit Progress Details
+        console.group('📚 Unit Progress');
+        this.gameProgress.unitsProgress.forEach((progress, unitId) => {
+            console.group(`Unit: ${unitId}`);
+            console.log('Completed Tasks:', progress.completedTasks);
+            console.log('Total Available Tasks:', this.getTotalUnitScenarios(unitId));
+            console.log('Completion Rate:', `${((progress.completedTasks / this.getTotalUnitScenarios(unitId)) * 100).toFixed(1)}%`);
+            console.log('Badge Earned:', progress.badgeEarned ? '✅' : '❌');
+            console.groupEnd();
+        });
+        console.groupEnd();
+
+        // Scenario Choices
+        console.group('🎯 Scenario Choices');
+        this.gameProgress.scenariosProgress.forEach((choiceId, scenarioId) => {
+            const scenario = scenarios.get(scenarioId);
+            const choice = scenario?.adviceOptions.get(choiceId);
+            console.group(`Scenario: ${scenarioId}`);
+            console.log('Chosen Advice ID:', choiceId);
+            console.log('Advice Rank:', choice?.rank || 'Unknown');
+            console.log('Unit:', scenario?.unitId || 'Unknown');
+            console.groupEnd();
+        });
+        console.groupEnd();
+
+        // Earned Badges Summary
+        console.group('🏆 Earned Badges');
+        let earnedBadgesCount = 0;
+        badges.forEach((badge, unitId) => {
+            const earned = this.hasBadge(unitId);
+            console.log(`${badge.name}: ${earned ? '✅' : '❌'}`);
+            if (earned) earnedBadgesCount++;
+        });
+        console.log(`Total Badges Earned: ${earnedBadgesCount}/${badges.size}`);
+        console.groupEnd();
+
+        console.groupEnd();
+
+        // Return a summary object for testing purposes
+        return {
+            totalUnits: this.gameProgress.unitsProgress.size,
+            totalScenarios: this.gameProgress.scenariosProgress.size,
+            totalBadges: earnedBadgesCount,
+            unitProgress: Array.from(this.gameProgress.unitsProgress.entries()).map(([unitId, progress]) => ({
+                unitId,
+                completedTasks: progress.completedTasks,
+                totalTasks: this.getTotalUnitScenarios(unitId),
+                badgeEarned: progress.badgeEarned
+            })),
+            scenarioChoices: Array.from(this.gameProgress.scenariosProgress.entries()).map(([scenarioId, choiceId]) => ({
+                scenarioId,
+                choiceId,
+                unitId: scenarios.get(scenarioId)?.unitId
+            }))
+        };
     }
 
 }
