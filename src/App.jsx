@@ -5,6 +5,7 @@ import { sampleScenario } from "../public/static/scenario";
 
 import Phaser from "phaser";
 import { PhaserGame } from "./game/PhaserGame";
+import "./App.css";
 
 function App() {
     //  References to the PhaserGame component (game and scene are exposed)
@@ -13,7 +14,7 @@ function App() {
 
     return (
         <div id="app">
-            <div>
+            <div className="text-black">
                 {showScenario && (
                     <ScenarioManager
                         scenario={sampleScenario}

@@ -1,46 +1,42 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { useState } from 'react';
-import DialogueScreen from './DialougeScreen';
-import { LearningPage } from './LearningScreen';
-import { AdviceScreen } from './AdviceScreen';
+import { useState } from "react";
+import DialogueScreen from "./DialougeScreen";
+import { LearningPage } from "./LearningScreen";
+import { AdviceScreen } from "./AdviceScreen";
 
-export const ScenarioManager = ({
-    scenario,
-    onComplete,
-    onClose
-}) => {
-    const [stage, setStage] = useState('dialogue');
+export const ScenarioManager = ({ scenario, onComplete, onClose }) => {
+    const [stage, setStage] = useState("dialogue");
     const [currentPageIndex, setCurrentPageIndex] = useState(0);
 
     const handleStartLearning = () => {
-        setStage('learning');
+        setStage("learning");
     };
 
     const handlePageComplete = () => {
         if (currentPageIndex < scenario.learningPages.length - 1) {
-            setCurrentPageIndex(prev => prev + 1);
+            setCurrentPageIndex((prev) => prev + 1);
         } else {
-            setStage('advice');
+            setStage("advice");
         }
     };
 
     const handlePageBack = () => {
         if (currentPageIndex > 0) {
-            setCurrentPageIndex(prev => prev - 1);
+            setCurrentPageIndex((prev) => prev - 1);
         } else {
-            setStage('dialogue');
+            setStage("dialogue");
         }
     };
 
     const handleAdviceBack = () => {
         setCurrentPageIndex(scenario.learningPages.length - 1);
-        setStage('learning');
+        setStage("learning");
     };
 
     return (
-        <>
-            {stage === 'dialogue' && (
+        <div>
+            {stage === "dialogue" && (
                 <DialogueScreen
                     scenario={scenario}
                     onStartLearning={handleStartLearning}
@@ -48,7 +44,7 @@ export const ScenarioManager = ({
                 />
             )}
 
-            {stage === 'learning' && (
+            {stage === "learning" && (
                 <LearningPage
                     page={scenario.learningPages[currentPageIndex]}
                     onComplete={handlePageComplete}
@@ -56,13 +52,13 @@ export const ScenarioManager = ({
                 />
             )}
 
-            {stage === 'advice' && (
+            {stage === "advice" && (
                 <AdviceScreen
                     scenario={scenario}
                     onSelectAdvice={onComplete}
                     onBack={handleAdviceBack}
                 />
             )}
-        </>
+        </div>
     );
 };

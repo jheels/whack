@@ -20,9 +20,9 @@ export class Game extends Scene {
         });
     }
 
-    runQuest() {
-        // pass
-    }
+    // runQuest() {
+    //     // pass
+    // }
 
     create() {
         // Create the tile map and layers
@@ -103,8 +103,8 @@ export class Game extends Scene {
         this.npc.body.immovable = true;
         this.npc2.body.immovable = true;
 
-        this.physics.add.collider(this.player, this.npc, runQuest);
-        this.physics.add.collider(this.player, this.npc2, runQuest);
+        // this.physics.add.collider(this.player, this.npc, runQuest);
+        // this.physics.add.collider(this.player, this.npc2, runQuest);
     }
 
     update() {
