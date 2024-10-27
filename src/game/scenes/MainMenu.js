@@ -77,6 +77,7 @@ export class MainMenu extends Scene {
             function () {
                 playButtonText.setStyle({ fill: "#ffffff" }); // Revert to white
                 this.scene.start("Game");
+                this.game.events.emit("display-progress");
             },
             this
         );
@@ -120,7 +121,7 @@ export class MainMenu extends Scene {
                 progressButtonText.destroy();
 
                 // emit display-progress event
-                this.game.events.emit("display-progress");
+                // this.game.events.emit("display-progress");
             },
             this
         );

@@ -1,37 +1,48 @@
 export const Difficulty = {
-    EASY: 'EASY',
-    MEDIUM: 'MEDIUM',
-    HARD: 'HARD'
+    EASY: "EASY",
+    MEDIUM: "MEDIUM",
+    HARD: "HARD",
 };
 
 export const AdviceRank = {
-    BEST: 'BEST',
-    GOOD: 'GOOD',
-    POOR: 'POOR'
+    BEST: "BEST",
+    GOOD: "GOOD",
+    POOR: "POOR",
 };
 
 // Sample scenario data with advice options as a HashMap
 const sampleAdviceOptions = new Map([
-    [1, {
-        id: 1,
-        rank: AdviceRank.BEST,
-        text: "Let's start with tracking your expenses for one month and aim to save 20% of your income.",
-        explanation: "This balanced approach helps establish good habits while remaining realistic.",
-        outcomes: {
-            immediate: "Thanks for the practical advice! I've downloaded a budgeting app and started tracking.",
-            longTerm: "After 6 months, I've built up my emergency fund and still enjoy occasional outings.",
+    [
+        1,
+        {
+            id: 1,
+            rank: AdviceRank.BEST,
+            text: "Let's start with tracking your expenses for one month and aim to save 20% of your income.",
+            explanation:
+                "This balanced approach helps establish good habits while remaining realistic.",
+            outcomes: {
+                immediate:
+                    "Thanks for the practical advice! I've downloaded a budgeting app and started tracking.",
+                longTerm:
+                    "After 6 months, I've built up my emergency fund and still enjoy occasional outings.",
+            },
         },
-    }],
-    [2, {
-        id: 2,
-        rank: AdviceRank.POOR,
-        text: "Let's not track your expenses forever month and aim to save 0% of your income.",
-        explanation: "This balanced approach helps establish bad habits while remaining unrealistic.",
-        outcomes: {
-            immediate: "No, Thanks for the practical advice! I've downloaded a budgeting app and started tracking.",
-            longTerm: "After 6 months, I am broke.",
+    ],
+    [
+        2,
+        {
+            id: 2,
+            rank: AdviceRank.POOR,
+            text: "Let's not track your expenses forever month and aim to save 0% of your income.",
+            explanation:
+                "This balanced approach helps establish bad habits while remaining unrealistic.",
+            outcomes: {
+                immediate:
+                    "No, Thanks for the practical advice! I've downloaded a budgeting app and started tracking.",
+                longTerm: "After 6 months, I am broke.",
+            },
         },
-    }]
+    ],
 ]);
 
 // Sample scenario with HashMap for advice options
@@ -43,17 +54,18 @@ export const sampleScenario = {
     advisee: {
         name: "Sarah Chen",
         imageUrl: "https://unsplash.it/300/300",
-        dialogue: "Hi, I just got my first job out of college and I'm making $45,000 a year. I've never had to budget before and I'm not sure where to start.",
+        dialogue:
+            "Hi, I just got my first job out of college and I'm making $45,000 a year. I've never had to budget before and I'm not sure where to start.",
     },
     learningPages: [
         {
             pageNumber: 1,
             title: "Understanding Income",
             text: "The first step in ___ is understanding your take-home pay. After taxes and deductions, your monthly income will be different from your annual ___. This difference can significantly impact your budgeting plans, as it’s essential to know exactly how much money you have available each month for expenses, ___, and discretionary spending. Additionally, consider other sources of income, such as ___, freelance work, or investment earnings, which can further affect your financial landscape.",
-            correctOrder: ["budgeting","salary","savings","bonuses"],
+            correctOrder: ["budgeting", "salary", "savings", "bonuses"],
         },
     ],
-    adviceOptions: sampleAdviceOptions
+    adviceOptions: sampleAdviceOptions,
 };
 
 // Variation 1 - Budgeting: Setting Financial Goals
@@ -65,7 +77,8 @@ export const sampleScenario1 = {
     advisee: {
         name: "Michael Johnson",
         imageUrl: "https://unsplash.it/300/300",
-        dialogue: "Hi, I want to save for a new car and I’m not sure how to set financial goals that help me get there.",
+        dialogue:
+            "Hi, I want to save for a new car and I’m not sure how to set financial goals that help me get there.",
     },
     learningPages: [
         {
@@ -75,7 +88,7 @@ export const sampleScenario1 = {
             correctOrder: ["budgeting", "X amount", "goals"],
         },
     ],
-    adviceOptions: sampleAdviceOptions
+    adviceOptions: sampleAdviceOptions,
 };
 
 // Variation 2 - Budgeting: Tracking Expenses
@@ -87,7 +100,8 @@ export const sampleScenario2 = {
     advisee: {
         name: "Jessica Smith",
         imageUrl: "https://unsplash.it/300/300",
-        dialogue: "Hi, I have trouble keeping track of my daily expenses and need help figuring out how to do that.",
+        dialogue:
+            "Hi, I have trouble keeping track of my daily expenses and need help figuring out how to do that.",
     },
     learningPages: [
         {
@@ -97,7 +111,7 @@ export const sampleScenario2 = {
             correctOrder: ["budgeting", "categories", "patterns"],
         },
     ],
-    adviceOptions: sampleAdviceOptions
+    adviceOptions: sampleAdviceOptions,
 };
 
 // Variation 3 - Housing: Renting vs. Buying
@@ -109,7 +123,8 @@ export const sampleScenario3 = {
     advisee: {
         name: "David Lee",
         imageUrl: "https://unsplash.it/300/300",
-        dialogue: "Hi, I’m trying to decide whether to rent or buy my first home. Can you help me weigh the pros and cons?",
+        dialogue:
+            "Hi, I’m trying to decide whether to rent or buy my first home. Can you help me weigh the pros and cons?",
     },
     learningPages: [
         {
@@ -119,7 +134,7 @@ export const sampleScenario3 = {
             correctOrder: ["buy", "down payment", "buy"],
         },
     ],
-    adviceOptions: sampleAdviceOptions
+    adviceOptions: sampleAdviceOptions,
 };
 
 // Variation 4 - Housing: Home Maintenance Costs
@@ -131,7 +146,8 @@ export const sampleScenario4 = {
     advisee: {
         name: "Emily Turner",
         imageUrl: "https://unsplash.it/300/300",
-        dialogue: "Hi, I just bought my first house and I’m worried about how much I should budget for maintenance costs.",
+        dialogue:
+            "Hi, I just bought my first house and I’m worried about how much I should budget for maintenance costs.",
     },
     learningPages: [
         {
@@ -141,7 +157,7 @@ export const sampleScenario4 = {
             correctOrder: ["maintenance", "3,000"],
         },
     ],
-    adviceOptions: sampleAdviceOptions
+    adviceOptions: sampleAdviceOptions,
 };
 
 // Variation 5 - Scam Awareness: Recognizing Common Scams
@@ -153,7 +169,8 @@ export const sampleScenario5 = {
     advisee: {
         name: "Alex Brown",
         imageUrl: "https://unsplash.it/300/300",
-        dialogue: "Hi, I’ve heard about different scams but I’m not sure how to recognize them. Can you help?",
+        dialogue:
+            "Hi, I’ve heard about different scams but I’m not sure how to recognize them. Can you help?",
     },
     learningPages: [
         {
@@ -163,7 +180,7 @@ export const sampleScenario5 = {
             correctOrder: ["scams", "information", "true"],
         },
     ],
-    adviceOptions: sampleAdviceOptions
+    adviceOptions: sampleAdviceOptions,
 };
 
 // Variation 6 - Scam Awareness: Reporting Scams
@@ -175,7 +192,8 @@ export const sampleScenario6 = {
     advisee: {
         name: "Rachel Green",
         imageUrl: "https://unsplash.it/300/300",
-        dialogue: "Hi, I think I may have encountered a scam. How do I report it?",
+        dialogue:
+            "Hi, I think I may have encountered a scam. How do I report it?",
     },
     learningPages: [
         {
@@ -185,7 +203,7 @@ export const sampleScenario6 = {
             correctOrder: ["appropriate", "incident", "scams"],
         },
     ],
-    adviceOptions: sampleAdviceOptions
+    adviceOptions: sampleAdviceOptions,
 };
 
 // Variation 7 - Scam Awareness: Online Safety
@@ -197,7 +215,8 @@ export const sampleScenario7 = {
     advisee: {
         name: "Tom Harris",
         imageUrl: "https://unsplash.it/300/300",
-        dialogue: "Hi, I’m worried about online scams and want to know how to stay safe while browsing.",
+        dialogue:
+            "Hi, I’m worried about online scams and want to know how to stay safe while browsing.",
     },
     learningPages: [
         {
@@ -207,7 +226,7 @@ export const sampleScenario7 = {
             correctOrder: ["two-factor", "information", "security"],
         },
     ],
-    adviceOptions: sampleAdviceOptions
+    adviceOptions: sampleAdviceOptions,
 };
 
 // Variation 8 - Consumer Credit: Understanding Credit Scores
@@ -219,7 +238,8 @@ export const sampleScenario8 = {
     advisee: {
         name: "Lisa White",
         imageUrl: "https://unsplash.it/300/300",
-        dialogue: "Hi, I keep hearing about credit scores and how important they are. Can you explain what they are?",
+        dialogue:
+            "Hi, I keep hearing about credit scores and how important they are. Can you explain what they are?",
     },
     learningPages: [
         {
@@ -229,7 +249,7 @@ export const sampleScenario8 = {
             correctOrder: ["credit", "credit"],
         },
     ],
-    adviceOptions: sampleAdviceOptions
+    adviceOptions: sampleAdviceOptions,
 };
 
 // Variation 9 - Consumer Credit: Managing Debt
@@ -241,7 +261,8 @@ export const sampleScenario9 = {
     advisee: {
         name: "Mark Wilson",
         imageUrl: "https://unsplash.it/300/300",
-        dialogue: "Hi, I have some debt and I'm not sure how to manage it. Can you help me?",
+        dialogue:
+            "Hi, I have some debt and I'm not sure how to manage it. Can you help me?",
     },
     learningPages: [
         {
@@ -251,7 +272,7 @@ export const sampleScenario9 = {
             correctOrder: ["rates", "avalanche"],
         },
     ],
-    adviceOptions: sampleAdviceOptions
+    adviceOptions: sampleAdviceOptions,
 };
 
 // Variation 10 - Consumer Credit: Responsible Credit Card Use
@@ -263,7 +284,8 @@ export const sampleScenario10 = {
     advisee: {
         name: "Natalie King",
         imageUrl: "https://unsplash.it/300/300",
-        dialogue: "Hi, I just got my first credit card, and I want to use it responsibly. Any tips?",
+        dialogue:
+            "Hi, I just got my first credit card, and I want to use it responsibly. Any tips?",
     },
     learningPages: [
         {
@@ -273,7 +295,7 @@ export const sampleScenario10 = {
             correctOrder: ["full", "30%"],
         },
     ],
-    adviceOptions: sampleAdviceOptions
+    adviceOptions: sampleAdviceOptions,
 };
 
 // Variation 11 - Loans: Understanding Different Types of Loans
@@ -285,7 +307,8 @@ export const sampleScenario11 = {
     advisee: {
         name: "Oliver Scott",
         imageUrl: "https://unsplash.it/300/300",
-        dialogue: "Hi, I’m considering taking out a loan but I'm confused about the different types. Can you explain?",
+        dialogue:
+            "Hi, I’m considering taking out a loan but I'm confused about the different types. Can you explain?",
     },
     learningPages: [
         {
@@ -295,7 +318,7 @@ export const sampleScenario11 = {
             correctOrder: ["mortgage", "home"],
         },
     ],
-    adviceOptions: sampleAdviceOptions
+    adviceOptions: sampleAdviceOptions,
 };
 
 // Variation 12 - Loans: The Loan Application Process
@@ -307,7 +330,8 @@ export const sampleScenario12 = {
     advisee: {
         name: "Sophia Reed",
         imageUrl: "https://unsplash.it/300/300",
-        dialogue: "Hi, I’m thinking of applying for a loan but I'm unsure about the process. Can you guide me?",
+        dialogue:
+            "Hi, I’m thinking of applying for a loan but I'm unsure about the process. Can you guide me?",
     },
     learningPages: [
         {
@@ -317,7 +341,7 @@ export const sampleScenario12 = {
             correctOrder: ["documents", "decision"],
         },
     ],
-    adviceOptions: sampleAdviceOptions
+    adviceOptions: sampleAdviceOptions,
 };
 
 // Variation 13 - Loans: Repaying Your Loan
@@ -329,7 +353,8 @@ export const sampleScenario13 = {
     advisee: {
         name: "Isabella Young",
         imageUrl: "https://unsplash.it/300/300",
-        dialogue: "Hi, I just took out a loan, and I want to know the best way to repay it.",
+        dialogue:
+            "Hi, I just took out a loan, and I want to know the best way to repay it.",
     },
     learningPages: [
         {
@@ -339,7 +364,7 @@ export const sampleScenario13 = {
             correctOrder: ["payments", "interest"],
         },
     ],
-    adviceOptions: sampleAdviceOptions
+    adviceOptions: sampleAdviceOptions,
 };
 
 // Variation 14 - Loans: Understanding Loan Terms
@@ -351,7 +376,8 @@ export const sampleScenario14 = {
     advisee: {
         name: "Liam Carter",
         imageUrl: "https://unsplash.it/300/300",
-        dialogue: "Hi, I’m confused by the terms in my loan agreement. Can you help me understand them?",
+        dialogue:
+            "Hi, I’m confused by the terms in my loan agreement. Can you help me understand them?",
     },
     learningPages: [
         {
@@ -361,9 +387,8 @@ export const sampleScenario14 = {
             correctOrder: ["interest", "loan"],
         },
     ],
-    adviceOptions: sampleAdviceOptions
+    adviceOptions: sampleAdviceOptions,
 };
-
 
 // Convert scenarios to HashMap
 export const scenarios = new Map([
@@ -386,8 +411,39 @@ export const scenarios = new Map([
 
 // Convert badges to HashMap
 export const badges = new Map([
-    ["budgeting", {
-        unitId: "budgeting",
-        name: "Budgeting Badge",
-    }]
+    [
+        "budgeting",
+        {
+            unitId: "budgeting",
+            name: "Budgeting Badge",
+        },
+    ],
+    [
+        "loans",
+        {
+            unitId: "loans",
+            name: "Loans Badge",
+        },
+    ],
+    [
+        "credit",
+        {
+            unitId: "credit",
+            name: "Credit Badge",
+        },
+    ],
+    [
+        "housing",
+        {
+            unitId: "housing",
+            name: "Housing Badge",
+        },
+    ],
+    [
+        "scams",
+        {
+            unitId: "scams",
+            name: "Scams Badge",
+        },
+    ],
 ]);

@@ -34,27 +34,27 @@ export class Game extends Scene {
             frameWidth: 16,
             frameHeight: 18,
         });
-        this.load.spritesheet("npc7", "assets/npc/M_01.png", {
+        this.load.spritesheet("npc7", "assets/npc/F_01.png", {
             frameWidth: 16,
             frameHeight: 18,
         });
-        this.load.spritesheet("npc8", "assets/npc/M_02.png", {
+        this.load.spritesheet("npc8", "assets/npc/F_02.png", {
             frameWidth: 16,
             frameHeight: 18,
         });
-        this.load.spritesheet("npc9", "assets/npc/M_03.png", {
+        this.load.spritesheet("npc9", "assets/npc/F_03.png", {
             frameWidth: 16,
             frameHeight: 18,
         });
-        this.load.spritesheet("npc10", "assets/npc/M_04.png", {
+        this.load.spritesheet("npc10", "assets/npc/F_04.png", {
             frameWidth: 16,
             frameHeight: 18,
         });
-        this.load.spritesheet("npc11", "assets/npc/M_05.png", {
+        this.load.spritesheet("npc11", "assets/npc/F_05.png", {
             frameWidth: 16,
             frameHeight: 18,
         });
-        this.load.spritesheet("npc12", "assets/npc/M_06.png", {
+        this.load.spritesheet("npc12", "assets/npc/F_06.png", {
             frameWidth: 16,
             frameHeight: 18,
         });
