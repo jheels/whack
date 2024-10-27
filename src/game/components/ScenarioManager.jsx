@@ -10,7 +10,7 @@ export const ScenarioManager = ({ scenario, onComplete, onClose }) => {
     const [stage, setStage] = useState("dialogue");
     const [currentPageIndex, setCurrentPageIndex] = useState(0);
     const [pageAnswers, setPageAnswers] = useState(
-        new Map(scenario.learningPages.map(page => [page.pageNumber, []]))
+        new Map(scenario.learningPages.map((page) => [page.pageNumber, []]))
     );
 
     // Initialize the progress manager and unit
@@ -27,7 +27,7 @@ export const ScenarioManager = ({ scenario, onComplete, onClose }) => {
 
     const handlePageComplete = (pageNumber, answers) => {
         // Store the answers for this page
-        setPageAnswers(prev => new Map(prev).set(pageNumber, answers));
+        setPageAnswers((prev) => new Map(prev).set(pageNumber, answers));
 
         if (currentPageIndex < scenario.learningPages.length - 1) {
             setCurrentPageIndex((prev) => prev + 1);
@@ -52,7 +52,7 @@ export const ScenarioManager = ({ scenario, onComplete, onClose }) => {
 
     const handleAdviceSelect = (adviceId) => {
         // Store the selected advice in the progress manager
-        progressManager.storeChosenAdvice(scenario.scenarioId, adviceId);
+        progressManager.storeChosenAdvice(scenario.scenarioId, adviceId.id);
 
         // Call the original onComplete callback
         if (onComplete) {
@@ -62,7 +62,11 @@ export const ScenarioManager = ({ scenario, onComplete, onClose }) => {
 
     // Get previously submitted answers for current page if they exist
     const getCurrentPageAnswers = () => {
-        return pageAnswers.get(scenario.learningPages[currentPageIndex].pageNumber) || [];
+        return (
+            pageAnswers.get(
+                scenario.learningPages[currentPageIndex].pageNumber
+            ) || []
+        );
     };
 
     return (
@@ -77,13 +81,17 @@ export const ScenarioManager = ({ scenario, onComplete, onClose }) => {
             {stage === "learning" && (
                 <LearningPage
                     page={scenario.learningPages[currentPageIndex]}
-                    onComplete={(answers) => handlePageComplete(
-                        scenario.learningPages[currentPageIndex].pageNumber,
-                        answers
-                    )}
+                    onComplete={(answers) =>
+                        handlePageComplete(
+                            scenario.learningPages[currentPageIndex].pageNumber,
+                            answers
+                        )
+                    }
                     onBack={handlePageBack}
                     initialAnswers={getCurrentPageAnswers()}
-                    isLastPage={currentPageIndex === scenario.learningPages.length - 1}
+                    isLastPage={
+                        currentPageIndex === scenario.learningPages.length - 1
+                    }
                 />
             )}
             {stage === "advice" && (
