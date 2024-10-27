@@ -48,7 +48,7 @@ const sampleAdviceOptions = new Map([
 // Sample scenario with HashMap for advice options
 export const sampleScenario = {
     scenarioId: "budget_easy_1",
-    unitId: "budgeting",
+    unitId: 0, // Budgeting
     difficulty: Difficulty.EASY,
     title: "First Time Budgeting",
     advisee: {
@@ -61,7 +61,7 @@ export const sampleScenario = {
         {
             pageNumber: 1,
             title: "Understanding Income",
-            text: "The first step in ___ is understanding your take-home pay. After taxes and deductions, your monthly income will be different from your annual ___. This difference can significantly impact your budgeting plans, as it’s essential to know exactly how much money you have available each month for expenses, ___, and discretionary spending. Additionally, consider other sources of income, such as ___, freelance work, or investment earnings, which can further affect your financial landscape.",
+            text: "The first step in ___ is understanding your take-home pay. After taxes and deductions, your monthly income will be different from your annual ___. This difference can significantly impact your budgeting plans, as it's essential to know exactly how much money you have available each month for expenses, ___, and discretionary spending. Additionally, consider other sources of income, such as ___, freelance work, or investment earnings, which can further affect your financial landscape.",
             correctOrder: ["budgeting", "salary", "savings", "bonuses"],
         },
     ],
@@ -71,14 +71,14 @@ export const sampleScenario = {
 // Variation 1 - Budgeting: Setting Financial Goals
 export const sampleScenario1 = {
     scenarioId: "budget_goal_1",
-    unitId: "budgeting",
+    unitId: 0, // Budgeting
     difficulty: Difficulty.EASY,
     title: "Setting Financial Goals",
     advisee: {
         name: "Michael Johnson",
         imageUrl: "https://unsplash.it/300/300",
         dialogue:
-            "Hi, I want to save for a new car and I’m not sure how to set financial goals that help me get there.",
+            "Hi, I want to save for a new car and I'm not sure how to set financial goals that help me get there.",
     },
     learningPages: [
         {
@@ -94,7 +94,7 @@ export const sampleScenario1 = {
 // Variation 2 - Budgeting: Tracking Expenses
 export const sampleScenario2 = {
     scenarioId: "budget_expense_1",
-    unitId: "budgeting",
+    unitId: 0, // Budgeting
     difficulty: Difficulty.EASY,
     title: "Tracking Expenses",
     advisee: {
@@ -117,14 +117,14 @@ export const sampleScenario2 = {
 // Variation 3 - Housing: Renting vs. Buying
 export const sampleScenario3 = {
     scenarioId: "housing_rent_buy_1",
-    unitId: "housing",
+    unitId: 3, // Housing
     difficulty: Difficulty.EASY,
     title: "Renting vs. Buying a Home",
     advisee: {
         name: "David Lee",
         imageUrl: "https://unsplash.it/300/300",
         dialogue:
-            "Hi, I’m trying to decide whether to rent or buy my first home. Can you help me weigh the pros and cons?",
+            "Hi, I'm trying to decide whether to rent or buy my first home. Can you help me weigh the pros and cons?",
     },
     learningPages: [
         {
@@ -140,20 +140,20 @@ export const sampleScenario3 = {
 // Variation 4 - Housing: Home Maintenance Costs
 export const sampleScenario4 = {
     scenarioId: "housing_maintenance_1",
-    unitId: "housing",
+    unitId: 3, // Housing
     difficulty: Difficulty.EASY,
     title: "Understanding Home Maintenance Costs",
     advisee: {
         name: "Emily Turner",
         imageUrl: "https://unsplash.it/300/300",
         dialogue:
-            "Hi, I just bought my first house and I’m worried about how much I should budget for maintenance costs.",
+            "Hi, I just bought my first house and I'm worried about how much I should budget for maintenance costs.",
     },
     learningPages: [
         {
             pageNumber: 1,
             title: "Planning for Maintenance",
-            text: "As a new homeowner, it’s important to budget for ___ costs. A common rule of thumb is to save about 1% of your home’s value each year for maintenance and repairs. This means if your home is worth $300,000, you should plan for ___ annually. Keeping up with regular maintenance can save you from larger, unexpected expenses down the road.",
+            text: "As a new homeowner, it's important to budget for ___ costs. A common rule of thumb is to save about 1% of your home's value each year for maintenance and repairs. This means if your home is worth $300,000, you should plan for ___ annually. Keeping up with regular maintenance can save you from larger, unexpected expenses down the road.",
             correctOrder: ["maintenance", "3,000"],
         },
     ],
@@ -163,20 +163,20 @@ export const sampleScenario4 = {
 // Variation 5 - Scam Awareness: Recognizing Common Scams
 export const sampleScenario5 = {
     scenarioId: "scam_recognizing_1",
-    unitId: "scam_awareness",
+    unitId: 4, // Scams
     difficulty: Difficulty.EASY,
     title: "Recognizing Common Scams",
     advisee: {
         name: "Alex Brown",
         imageUrl: "https://unsplash.it/300/300",
         dialogue:
-            "Hi, I’ve heard about different scams but I’m not sure how to recognize them. Can you help?",
+            "Hi, I've heard about different scams but I'm not sure how to recognize them. Can you help?",
     },
     learningPages: [
         {
             pageNumber: 1,
             title: "Identifying Scams",
-            text: "To protect yourself, it’s essential to recognize common ___. Many scams often use tactics such as high-pressure sales, unsolicited offers, or requests for personal ___. Always verify the source before providing any information, and be cautious of deals that seem too good to be ___.",
+            text: "To protect yourself, it's essential to recognize common ___. Many scams often use tactics such as high-pressure sales, unsolicited offers, or requests for personal ___. Always verify the source before providing any information, and be cautious of deals that seem too good to be ___.",
             correctOrder: ["scams", "information", "true"],
         },
     ],
@@ -186,7 +186,7 @@ export const sampleScenario5 = {
 // Variation 6 - Scam Awareness: Reporting Scams
 export const sampleScenario6 = {
     scenarioId: "scam_reporting_1",
-    unitId: "scam_awareness",
+    unitId: 4, // Scams
     difficulty: Difficulty.EASY,
     title: "Reporting Scams",
     advisee: {
@@ -209,14 +209,14 @@ export const sampleScenario6 = {
 // Variation 7 - Scam Awareness: Online Safety
 export const sampleScenario7 = {
     scenarioId: "scam_online_safety_1",
-    unitId: "scam_awareness",
+    unitId: 4, // Scams
     difficulty: Difficulty.EASY,
     title: "Staying Safe Online",
     advisee: {
         name: "Tom Harris",
         imageUrl: "https://unsplash.it/300/300",
         dialogue:
-            "Hi, I’m worried about online scams and want to know how to stay safe while browsing.",
+            "Hi, I'm worried about online scams and want to know how to stay safe while browsing.",
     },
     learningPages: [
         {
@@ -232,7 +232,7 @@ export const sampleScenario7 = {
 // Variation 8 - Consumer Credit: Understanding Credit Scores
 export const sampleScenario8 = {
     scenarioId: "credit_scores_1",
-    unitId: "consumer_credit",
+    unitId: 2, // Credit
     difficulty: Difficulty.EASY,
     title: "Understanding Credit Scores",
     advisee: {
@@ -255,7 +255,7 @@ export const sampleScenario8 = {
 // Variation 9 - Consumer Credit: Managing Debt
 export const sampleScenario9 = {
     scenarioId: "credit_debt_management_1",
-    unitId: "consumer_credit",
+    unitId: 2, // Credit
     difficulty: Difficulty.EASY,
     title: "Managing Debt Effectively",
     advisee: {
@@ -278,7 +278,7 @@ export const sampleScenario9 = {
 // Variation 10 - Consumer Credit: Responsible Credit Card Use
 export const sampleScenario10 = {
     scenarioId: "credit_card_use_1",
-    unitId: "consumer_credit",
+    unitId: 2, // Credit
     difficulty: Difficulty.EASY,
     title: "Responsible Credit Card Use",
     advisee: {
@@ -301,14 +301,14 @@ export const sampleScenario10 = {
 // Variation 11 - Loans: Understanding Different Types of Loans
 export const sampleScenario11 = {
     scenarioId: "loans_types_1",
-    unitId: "loans",
+    unitId: 1, // Loans
     difficulty: Difficulty.EASY,
     title: "Understanding Different Types of Loans",
     advisee: {
         name: "Oliver Scott",
         imageUrl: "https://unsplash.it/300/300",
         dialogue:
-            "Hi, I’m considering taking out a loan but I'm confused about the different types. Can you explain?",
+            "Hi, I'm considering taking out a loan but I'm confused about the different types. Can you explain?",
     },
     learningPages: [
         {
@@ -324,20 +324,20 @@ export const sampleScenario11 = {
 // Variation 12 - Loans: The Loan Application Process
 export const sampleScenario12 = {
     scenarioId: "loans_application_1",
-    unitId: "loans",
+    unitId: 1, // Loans
     difficulty: Difficulty.EASY,
     title: "The Loan Application Process",
     advisee: {
         name: "Sophia Reed",
         imageUrl: "https://unsplash.it/300/300",
         dialogue:
-            "Hi, I’m thinking of applying for a loan but I'm unsure about the process. Can you guide me?",
+            "Hi, I'm thinking of applying for a loan but I'm unsure about the process. Can you guide me?",
     },
     learningPages: [
         {
             pageNumber: 1,
             title: "Steps to Apply for a Loan",
-            text: "The loan application process typically involves several steps: First, determine how much you need to borrow and the type of loan you want. Next, gather necessary ___ such as income proof and credit history. Finally, submit your application and wait for the lender’s ___. Be prepared for potential follow-up questions.",
+            text: "The loan application process typically involves several steps: First, determine how much you need to borrow and the type of loan you want. Next, gather necessary ___ such as income proof and credit history. Finally, submit your application and wait for the lender's ___. Be prepared for potential follow-up questions.",
             correctOrder: ["documents", "decision"],
         },
     ],
@@ -347,7 +347,7 @@ export const sampleScenario12 = {
 // Variation 13 - Loans: Repaying Your Loan
 export const sampleScenario13 = {
     scenarioId: "loans_repayment_1",
-    unitId: "loans",
+    unitId: 1, // Loans
     difficulty: Difficulty.EASY,
     title: "Repaying Your Loan",
     advisee: {
@@ -370,14 +370,14 @@ export const sampleScenario13 = {
 // Variation 14 - Loans: Understanding Loan Terms
 export const sampleScenario14 = {
     scenarioId: "loans_terms_1",
-    unitId: "loans",
+    unitId: 1, // Loans
     difficulty: Difficulty.EASY,
     title: "Understanding Loan Terms",
     advisee: {
         name: "Liam Carter",
         imageUrl: "https://unsplash.it/300/300",
         dialogue:
-            "Hi, I’m confused by the terms in my loan agreement. Can you help me understand them?",
+            "Hi, I'm confused by the terms in my loan agreement. Can you help me understand them?",
     },
     learningPages: [
         {
@@ -412,37 +412,37 @@ export const scenarios = new Map([
 // Convert badges to HashMap
 export const badges = new Map([
     [
-        "budgeting",
+        0,
         {
-            unitId: "budgeting",
+            unitId: 0,
             name: "Budgeting Badge",
         },
     ],
     [
-        "loans",
+        1,
         {
-            unitId: "loans",
+            unitId: 1,
             name: "Loans Badge",
         },
     ],
     [
-        "credit",
+        2,
         {
-            unitId: "credit",
+            unitId: 2,
             name: "Credit Badge",
         },
     ],
     [
-        "housing",
+        3,
         {
-            unitId: "housing",
+            unitId: 3,
             name: "Housing Badge",
         },
     ],
     [
-        "scams",
+        4,
         {
-            unitId: "scams",
+            unitId: 4,
             name: "Scams Badge",
         },
     ],

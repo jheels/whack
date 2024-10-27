@@ -7,7 +7,6 @@ import { sampleScenario } from "../public/static/scenario";
 import { PhaserGame } from "./game/PhaserGame";
 import "./App.css";
 // import ProgressPopup from "./game/components/Progress";
-import { ProgressManager } from "./game/components/ProgressManager";
 import TopBar from "./game/components/TopBar";
 
 function App() {

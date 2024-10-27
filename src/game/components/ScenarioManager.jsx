@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import DialogueScreen from "./DialougeScreen";
@@ -43,26 +44,19 @@ export const ScenarioManager = ({ scenario, onComplete, onClose }) => {
         setCurrentPageIndex(scenario.learningPages.length - 1);
         setStage("learning");
     };
-
     const handleAdviceSelect = async (adviceId) => {
-        // Store the selected advice in the progress manager
-        progressManager.storeChosenAdvice(scenario.scenarioId, adviceId.id);
-        console.log("Stored advice", adviceId.id);
-        setStage("outcome");
+        // Use the new combined method instead of just storeChosenAdvice
+        progressManager.processAdviceSelection(scenario.scenarioId, adviceId.id);
 
-        // Start loading animation
+        setStage("outcome");
         setIsLoading(true);
 
-        // Simulate loading time
         await new Promise(resolve => setTimeout(resolve, 2000));
-        console.log("Loading complete");
 
-        // Get the outcome from the static database
         const selectedAdvice = scenario.adviceOptions.get(adviceId.id);
         setSelectedOutcome(selectedAdvice);
         setIsLoading(false);
     };
-
     const handleRestart = () => {
         // Reset to initial state
         setStage("dialogue");

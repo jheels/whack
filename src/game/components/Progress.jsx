@@ -2,11 +2,10 @@
 
 import { ProgressManager } from "./ProgressManager";
 
-const pm = ProgressManager.getInstance();
 
-console.log(pm.getUnitProgress(0));
 
 const ProgressPopup = () => {
+    const pm = ProgressManager.getInstance();
     return (
         <div className="absolute top-40 left-1/2  -translate-x-1/2 -translate-y-1/2 bg-pixelBackground text-black p-3 ">
             {/* <h1 className="text-3xl">Progress</h1> */}
@@ -19,7 +18,7 @@ const ProgressPopup = () => {
                 <img
                     className={
                         pm.getUnitProgress(0).completedTasks ===
-                        pm.getTotalUnitScenarios(0)
+                            pm.getTotalUnitScenarios(0)
                             ? "opacity-100"
                             : "opacity-40"
                     }
@@ -36,7 +35,7 @@ const ProgressPopup = () => {
                 <img
                     className={
                         pm.getUnitProgress(1).completedTasks ===
-                        pm.getTotalUnitScenarios(1)
+                            pm.getTotalUnitScenarios(1)
                             ? "opacity-100"
                             : "opacity-40"
                     }
@@ -53,7 +52,7 @@ const ProgressPopup = () => {
                 <img
                     className={
                         pm.getUnitProgress(2).completedTasks ===
-                        pm.getTotalUnitScenarios(2)
+                            pm.getTotalUnitScenarios(2)
                             ? "opacity-100"
                             : "opacity-40"
                     }
@@ -70,7 +69,7 @@ const ProgressPopup = () => {
                 <img
                     className={
                         pm.getUnitProgress(3).completedTasks ===
-                        pm.getTotalUnitScenarios(3)
+                            pm.getTotalUnitScenarios(3)
                             ? "opacity-100"
                             : "opacity-40"
                     }
@@ -87,7 +86,7 @@ const ProgressPopup = () => {
                 <img
                     className={
                         pm.getUnitProgress(4).completedTasks ===
-                        pm.getTotalUnitScenarios(4)
+                            pm.getTotalUnitScenarios(4)
                             ? "opacity-100"
                             : "opacity-40"
                     }

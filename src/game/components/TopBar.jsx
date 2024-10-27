@@ -1,14 +1,13 @@
 /* eslint-disable react/prop-types */
 
 import { useState } from "react";
-import { ProgressManager } from "./ProgressManager";
 import ProgressPopup from "./Progress";
+import { ProgressManager } from "./ProgressManager";
 
-const pm = ProgressManager.getInstance();
-
-console.log(pm.getUnitProgress(0));
 
 const TopBar = () => {
+    const pm = ProgressManager.getInstance();
+
     const [viewProgress, setViewProgress] = useState(false);
 
     return (
