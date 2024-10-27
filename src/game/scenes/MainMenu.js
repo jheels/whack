@@ -56,9 +56,9 @@ export class MainMenu extends Scene {
         // Play Button
         var playButtonText = this.add.text(
             this.cameras.main.width / 2, // Center X
-            y + boxHeight - 150, // Position Y (near bottom of the box)
+            y + boxHeight - 200, // Position Y (near bottom of the box)
             "Play", // Text
-            { fontSize: "40px", fill: "#ffffff" } // Style (white text, 40px size)
+            { fontSize: "50px", fill: "#ffffff" } // Style (white text, 40px size)
         );
 
         // Center the button
@@ -97,64 +97,74 @@ export class MainMenu extends Scene {
         // Adjust Volume
         music.setVolume(0.5); // Set the volume (0.0 to 1.0)
 
-        var muteButton = this.add.sprite(1250, 100, "unmuteIcon"); // Position as needed
-        muteButton.setInteractive(); // Make it interactive
+        // var muteButton = this.add.sprite(1250, 100, "unmuteIcon"); // Position as needed
+        // muteButton.setInteractive(); // Make it interactive
 
-        // Mute button click handler
-        muteButton.on("pointerdown", function () {
-            if (music.isPlaying) {
-                music.pause();
-                muteButton.setTexture("muteIcon"); // Change icon to mute
-            } else {
-                music.resume();
-                muteButton.setTexture("unmuteIcon"); // Change icon to unmute
-            }
-        });
+        // // Mute button click handler
+        // muteButton.on("pointerdown", function () {
+        //     if (music.isPlaying) {
+        //         music.pause();
+        //         muteButton.setTexture("muteIcon"); // Change icon to mute
+        //     } else {
+        //         music.resume();
+        //         muteButton.setTexture("unmuteIcon"); // Change icon to unmute
+        //     }
+        // });
 
         EventBus.emit("current-scene-ready", this);
-        // Progress Button
-        var progressButtonText = this.add.text(
+        // how to play instructions
+        var instructionText = this.add.text(
             this.cameras.main.width / 2, // Center X
-            y + boxHeight - 50, // Position Y (slightly below the Play button)
-            "Progress", // Text
-            { fontSize: "40px", fill: "#ffffff" } // Style (white text, 40px size)
+            y + boxHeight - 100, // Position Y (slightly below the Play button)
+            `Use WASD to move and `, // Text
+            { fontSize: "30px", fill: "#ffffff" } // Style (white text, 30px size)
         );
 
         // Center the button
-        progressButtonText.setOrigin(0.5);
-
-        // Add interactivity to the button
-        progressButtonText.setInteractive();
-
-        // Progress button events
-        progressButtonText.on("pointerdown", function () {
-            progressButtonText.setStyle({ fill: "#00ff00" }); // Optional click color change
-        });
-
-        progressButtonText.on(
-            "pointerup",
-            function () {
-                progressButtonText.setStyle({ fill: "#ffffff" }); // Revert to white
-                // graphics.destroy();
-                // destroy the Play button
-                playButtonText.destroy();
-                // destroy the logo
-                logo.destroy();
-                progressButtonText.destroy();
-
-                // emit display-progress event
-                // this.game.events.emit("display-progress");
-            },
-            this
+        instructionText.setOrigin(0.5);
+        // how to play instructions
+        var instructionText2 = this.add.text(
+            this.cameras.main.width / 2, // Center X
+            y + boxHeight - 50, // Position Y (slightly below the Play button)
+            `press "e" to interact with NPC`, // Text
+            { fontSize: "30px", fill: "#ffffff" } // Style (white text, 40px size)
         );
 
-        progressButtonText.on("pointerover", function () {
-            progressButtonText.setStyle({ fill: "#ff0" }); // Yellow when hovered
-        });
+        // Center the button
+        instructionText2.setOrigin(0.5);
 
-        progressButtonText.on("pointerout", function () {
-            progressButtonText.setStyle({ fill: "#ffffff" }); // Revert to white
-        });
+        // // Add interactivity to the button
+        // progressButtonText.setInteractive();
+
+        // // Progress button events
+        // progressButtonText.on("pointerdown", function () {
+        //     progressButtonText.setStyle({ fill: "#00ff00" }); // Optional click color change
+        // });
+
+        // progressButtonText.on(
+        //     "pointerup",
+        //     function () {
+        //         progressButtonText.setStyle({ fill: "#ffffff" }); // Revert to white
+        //         // graphics.destroy();
+        //         // destroy the Play button
+        //         playButtonText.destroy();
+        //         // destroy the logo
+        //         logo.destroy();
+        //         progressButtonText.destroy();
+
+        //         // emit display-progress event
+        //         // this.game.events.emit("display-progress");
+        //     },
+        //     this
+        // );
+
+        // progressButtonText.on("pointerover", function () {
+        //     progressButtonText.setStyle({ fill: "#ff0" }); // Yellow when hovered
+        // });
+
+        // progressButtonText.on("pointerout", function () {
+        //     progressButtonText.setStyle({ fill: "#ffffff" }); // Revert to white
+        // });
 
         EventBus.emit("current-scene-ready", this);
     }
