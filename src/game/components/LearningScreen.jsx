@@ -10,6 +10,7 @@ export const LearningPage = ({ page, onComplete, onBack }) => {
         }))
     );
 
+    const [answers, setAnswers] = useState(Array(page.correctOrder.length).fill(''));
     const [filledBlanks, setFilledBlanks] = useState({});
     const draggedWordRef = useRef(null);
 
@@ -22,19 +23,19 @@ export const LearningPage = ({ page, onComplete, onBack }) => {
 
     const handleDrop = (blankIndex) => {
         if (!draggedWordRef.current) return;
-
+    
         const word = words.find((w) => w.id === draggedWordRef.current);
         if (word) {
-            setFilledBlanks((prev) => ({
-                ...prev,
-                [blankIndex]: word.text,
-            }));
+            setAnswers((prevAnswers) => {
+                const updatedAnswers = [...prevAnswers]; // Create a copy of the current answers array
+                updatedAnswers[blankIndex] = word.text; // Set the dropped word in the correct blank
+                return updatedAnswers; // Update the state with the modified array
+            });
         }
-        draggedWordRef.current = null;
+        draggedWordRef.current = null; // Reset the dragged word reference
     };
 
     const checkAnswers = () => {
-        const answers = Object.values(filledBlanks);
         const isCorrect = answers.every(
             (answer, index) => answer === page.correctOrder[index]
         );
@@ -42,6 +43,8 @@ export const LearningPage = ({ page, onComplete, onBack }) => {
             onComplete();
         }
     };
+
+    const areAllBlanksFilled = answers.every(answer => answer.trim() !== '');
 
     return (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4">
@@ -61,7 +64,7 @@ export const LearningPage = ({ page, onComplete, onBack }) => {
                                         onDragOver={(e) => e.preventDefault()}
                                         onDrop={() => handleDrop(index)}
                                     >
-                                        {filledBlanks[index] || ""}
+                                        {answers[index] || ""}
                                     </span>
                                 )}
                             </React.Fragment>
@@ -76,7 +79,7 @@ export const LearningPage = ({ page, onComplete, onBack }) => {
                                 onDragStart={() => handleDragStart(word)}
                                 className={`px-3 py-1 bg-pixelBackground border-2 border-pixelBorder rounded cursor-move font-pixel text-pixelText
                                 ${
-                                    Object.values(filledBlanks).includes(
+                                    Object.values(answers).includes(
                                         word.text
                                     )
                                         ? "opacity-50"
@@ -96,12 +99,13 @@ export const LearningPage = ({ page, onComplete, onBack }) => {
                     >
                         Back
                     </button>
+                    {areAllBlanksFilled && (
                     <button
                         onClick={checkAnswers}
                         className="px-4 py-2 font-pixel text-pixelText bg-pixelBackground border-2 border-pixelBorder hover:border-pixelHover hover:text-pixelHover active:bg-pixelHover rounded"
                     >
                         Check Answers
-                    </button>
+                    </button> )}
                 </div>
             </div>
         </div>
