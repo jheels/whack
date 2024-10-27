@@ -73,9 +73,10 @@ export class Game extends Scene {
             repeat: -1
         });
 
-    
-        this.player = this.physics.add.sprite(100, 550, 'character');
-        this.player.setScale(2);
+        this.player = this.physics.add.sprite(100, 550, "character");
+        this.player.setScale(2.5);
+        this.physics.world.createDebugGraphic();
+        this.physics.world.debugGraphic.visible = true;
         this.cursors = this.input.keyboard.createCursorKeys();
     
         // Set up the camera to follow the player
@@ -83,8 +84,22 @@ export class Game extends Scene {
 
         this.cameras.main.setBounds(0, 0, 1344, 1104);
 
-        
-        // Add a sprite and enable movement
+        this.npc = this.physics.add.sprite(200, 400, "npc");
+        this.npc.state = "idle";
+        this.npc2 = this.physics.add.sprite(300, 400, "npc");
+        this.npc.setScale(2);
+        this.npc2.setScale(2);
+
+        const collisionObjects = map.getObjectLayer('collision').objects;
+        collisionObjects.forEach(object => {
+            const obj = this.physics.add.sprite(object.x * scaleX, object.y * scaleY, null).setOrigin(0, 0);
+            obj.displayWidth = object.width * scaleX;
+            obj.displayHeight = object.height * scaleY;
+            obj.body.setImmovable(true);
+            obj.body.setAllowGravity(false);
+            this.physics.add.collider(this.player, obj);
+        });
+
     }
 
 
@@ -92,7 +107,7 @@ update() {
     // Reset velocity
     this.player.body.setVelocity(0);
 
-    const speed = 160;
+    const speed = 550;
     // Handle movement and animations
     if (this.cursors.left.isDown) {
         this.player.body.setVelocityX(-speed);
