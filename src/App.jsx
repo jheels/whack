@@ -6,8 +6,9 @@ import { sampleScenario } from "../public/static/scenario";
 
 import { PhaserGame } from "./game/PhaserGame";
 import "./App.css";
-import ProgressPopup from "./game/components/Progress";
+// import ProgressPopup from "./game/components/Progress";
 import { ProgressManager } from "./game/components/ProgressManager";
+import TopBar from "./game/components/TopBar";
 
 function App() {
     //  References to the PhaserGame component (game and scene are exposed)
@@ -52,7 +53,7 @@ function App() {
             </div>
             <div>
                 {showProgress && (
-                    <ProgressPopup onClose={() => setShowProgress(false)} />
+                    <TopBar onClose={() => setShowProgress(false)} />
                 )}
             </div>
 
