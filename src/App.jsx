@@ -6,11 +6,13 @@ import { sampleScenario } from "../public/static/scenario";
 import Phaser from "phaser";
 import { PhaserGame } from "./game/PhaserGame";
 import "./App.css";
+import ProgressPopup from "./game/components/Progress";
 
 function App() {
     //  References to the PhaserGame component (game and scene are exposed)
     const phaserRef = useRef();
     const [showScenario, setShowScenario] = useState(false);
+    const [showProgress, setShowProgress] = useState(true);
 
     useEffect(() => {
         // Access the Phaser game instance
@@ -20,7 +22,7 @@ function App() {
         });
         return () => {
             setShowScenario(false);
-            // game.destroy(true)
+            game.destroy(true);
         };
     }, []);
 
@@ -38,6 +40,12 @@ function App() {
                     />
                 )}
             </div>
+            <div>
+                {showProgress && (
+                    <ProgressPopup onClose={() => setShowProgress(false)} />
+                )}
+            </div>
+
             <PhaserGame ref={phaserRef} />
         </div>
     );
