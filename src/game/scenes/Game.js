@@ -83,6 +83,9 @@ export class Game extends Scene {
 
         this.player = this.physics.add.sprite(100, 550, "character");
         this.player.setScale(2.5);
+        this.player.body.setSize(this.player.width * 0.5, this.player.height * 0.5);
+        this.player.body.setOffset(this.player.width * 0.25, this.player.height * 0.25);
+
         this.physics.world.createDebugGraphic();
         this.physics.world.debugGraphic.visible = true;
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -103,6 +106,7 @@ export class Game extends Scene {
             const obj = this.physics.add.sprite(object.x * scaleX, object.y * scaleY, null).setOrigin(0, 0);
             obj.displayWidth = object.width * scaleX;
             obj.displayHeight = object.height * scaleY;
+            obj.visible = false;
             obj.body.setImmovable(true);
             obj.body.setAllowGravity(false);
             this.physics.add.collider(this.player, obj);
