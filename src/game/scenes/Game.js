@@ -37,6 +37,9 @@ export class Game extends Scene {
         const extraLayer = map.createLayer("Tile Layer 4", tileset);
         extraLayer.setScale(scaleX, scaleY);
 
+        foregroundLayer.setDepth(3);
+        backupLayer.setDepth(0);
+
         var music = this.sound.get("backgroundMusic");
 
         var muteButton = this.add.sprite(1250, 100, 'unmuteIcon'); // Position as needed
@@ -45,7 +48,7 @@ export class Game extends Scene {
         // Mute button click handler
         muteButton.on('pointerdown', function () {
             if (music.isPlaying) {
-                music.pause();
+                music.resume();
                 muteButton.setTexture('muteIcon'); // Change icon to mute
             } else {
                 music.resume();
@@ -53,7 +56,7 @@ export class Game extends Scene {
             }
         });
 
-        muteButton.scale(0.5);
+        muteButton.setScale(0.5);   
 
         // Create the tile map and layers
         this.anims.create({
@@ -134,7 +137,7 @@ export class Game extends Scene {
         // Reset velocity
         this.player.body.setVelocity(0);
 
-        const speed = 160;
+        const speed = 400;
         // Handle movement and animations
         if (this.cursors.left.isDown) {
             this.player.body.setVelocityX(-speed);
