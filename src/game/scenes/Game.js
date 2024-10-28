@@ -7,9 +7,6 @@ export class Game extends Scene {
     }
 
     preload() {
-        // Load assets
-        this.load.image("tiles", "assets/tiles.png");
-        this.load.tilemapTiledJSON("map", "assets/map.json");
 
         const npcs = [
             { key: "npc1", path: "assets/npc/M_01.png" },
@@ -34,12 +31,12 @@ export class Game extends Scene {
             });
         });
     
-        this.load.spritesheet("character", "assets/character.png", {
+        this.load.spritesheet("character", "assets/player/character.png", {
             frameWidth: 16,
             frameHeight: 16,
         });
 
-        this.load.spritesheet("idlechar", "assets/idle.png", {
+        this.load.spritesheet("idlechar", "assets/player/idle.png", {
             frameWidth: 16, // Adjust if your sprite size is different
             frameHeight: 16, // Adjust if your sprite size is different
         });
