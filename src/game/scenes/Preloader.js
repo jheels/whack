@@ -20,11 +20,16 @@ export class Preloader extends Scene {
     }
 
     preload() {
-        //  Load the assets for the game - Replace with your own assets
-        this.load.setPath("assets");
 
-        this.load.image("logo", "logo.png");
-        // this.load.image("star", "star.png");
+        this.load.image('tiles', 'assets/map/tiles.png'); // Load the tileset image
+        this.load.tilemapTiledJSON('map', 'assets/map/map.json'); // or 'assets/map.tmj'
+        this.load.image("logo", "assets/icons/logo.png");
+        this.load.image("muteIcon", "assets/icons/mute-icon.png");
+        this.load.image("unmuteIcon", "assets/icons/unmute-icon.png");
+        
+        this.load.audio('backgroundMusic', 'assets/sounds/bgm.mp3');
+        this.load.audio('wrong', 'assets/sounds/wrong.mp3');
+        this.load.audio('levelUpSFX', 'assets/sounds/level-up.mp3');
     }
 
     create() {

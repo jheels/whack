@@ -11,6 +11,9 @@ export const LearningPage = ({ page, onComplete, onBack }) => {
         }))
     );
 
+    const correctAnswerSFX = new Audio("/assets/sounds/level-up.mp3");
+    const wrongAnswerSFX = new Audio("/assets/sounds/wrong.mp3");
+
     const [answers, setAnswers] = useState(Array(page.correctOrder.length).fill(''));
     const draggedWordRef = useRef(null);
 
@@ -40,7 +43,11 @@ export const LearningPage = ({ page, onComplete, onBack }) => {
             (answer, index) => answer === page.correctOrder[index]
         );
         if (isCorrect) {
+            correctAnswerSFX.play();
             onComplete();
+        } else {
+            wrongAnswerSFX.currentTime = 0;
+            wrongAnswerSFX.play();
         }
     };
 
